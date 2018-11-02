@@ -73,3 +73,10 @@ body {
     background-image: url('/img/asian-skin-care-01.png');
     background-size: cover;
 }
+.backBtn{
+    color:black !important;
+}
+.searchBtn
+{
+    color:black !important;
+}

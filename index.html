@@ -2,164 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
-    <title>Skincare Master</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-        crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, iinitial-scale=1">
+  <title>Skincare Master</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+    crossorigin="anonymous">
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 
 <body>
-    <div>
+  <!--Nav bar-->
+  <div>
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">REVIEW</a>
-        <a class = "inSidenav" href="#">Product Type</a>
-        <a class = "innerSidenav"href="#">cleaner</a>
-        <a class = "innerSidenav"href="#">moisturizer</a>
-        <a class = "innerSidenav"href="#">body lotin</a>
-        <a class = "innerSidenav"href="#">serum</a>
-        <a class = "innerSidenav"href="#">eye care</a>
-        <a class = "inSidenav"href="#">Skin Concern</a>
-        <a class = "innerSidenav"href="#">Acne</a>
-        <a class = "innerSidenav"href="#">Blackheads</a>
-        <a class = "innerSidenav"href="#">Discoloration</a>
-        <a class = "innerSidenav"href="#">Wrinkles</a>
-        <a href="#">ARTICLE</a>
-        <a class = "innerSidenav"href="#">DIY Skincare</a>
-        <a class = "innerSidenav"href="#">Nutrition</a>
-        <a class = "innerSidenav"href="#">Expert Advice</a>
-        <a href="#">MY ACCOUNT</a>
-        <a href="#">HELP</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="ReviewList.html">REVIEW</a>
+      <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
+      <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+      <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+      <a class="innerSidenav" href="bodyLotionList.html">body lotin</a>
+      <a class="innerSidenav" href="serumList.html">serum</a>
+      <a class="innerSidenav" href="eyeCareList.html">eye care</a>
+      <a class="inSidenav" href="SkinConcernList.html">Skin Concern</a>
+      <a class="innerSidenav" href="AcneList.html">Acne</a>
+      <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+      <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
+      <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+      <a href="ArticleList.html">ARTICLE</a>
+      <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+      <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+      <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+      <a href="myAccountPage.html">MY ACCOUNT</a>
+      <a href="Help.html">HELP</a>
     </div>
-    
+
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&ensp;&#9776; </span>
     <a class="title justify-content-center" href="#">SkincareMaster</a>
-    </div>
-    <!-- Search form -->
-    <div>
+  </div>
+  <!-- Search form -->
+  <div>
     <form class="form-inline ">
-        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser" aria-label="Search">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </form>
+      <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser" aria-label="Search">
+      <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+    </form>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid jumbotron-bg">
+    <div class="container">
+      <h3>Welcome</h3>
+      <p class="lead">Start your journey to healthy skin.</p>
     </div>
+  </div>
 
-    <div class="jumbotron jumbotron-fluid jumbotron-bg">
-            <div class="container">
-              <h3>Welcome</h3>
-              <p class="lead">Start your journey to healthy skin.</p>
-            </div>
-          </div>
-  
-          <hr class="my-4">
-  
-          <!-- Top Products-->
-          <h4 class="text-center">Popular Products</h4>
-  
-  
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                  <div class="row justify-content-center">
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide"><p class="text-center">product 1</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide"><p class="text-center">product 2</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide"><p class="text-center">product 3</p></div>
-                  </div>
-              </div>
-              <div class="carousel-item">
-                  <div class="row justify-content-center">
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide"><p class="text-center">product 1</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide"><p class="text-center">product 2</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide"><p class="text-center">product 3</p></div>
-                  </div>
-              </div>
-              <div class="carousel-item">
-                  <div class="row justify-content-center">
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide"><p class="text-center">product 1</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide"><p class="text-center">product 2</p></div>
-                      <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide"><p class="text-center">product 3</p></div>
-                  </div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-  
-          <hr class="my-4">
-  
-          <!-- Latest Articles-->
-          <h4 class="text-center">Latest Articles</h4>
-  
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row justify-content-center">
-                    <div class="col-7">
-                      <img src="/img/diy-organic-skincare-2646.jpg" class="img-fluid">
-                    </div>
-                    <div class="col-3">
-                      <p>DIY organic skincare</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                          <img src="/img/skincare.jpg" class="img-fluid">
-                        </div>
-                        <div class="col-3">
-                          <p>DIY organic skincare</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                          <img src="/img/evde-cilt-bakimi.jpg" class="img-fluid">
-                        </div>
-                        <div class="col-3">
-                          <p>DIY organic skincare</p>
-                        </div>
-                      </div>
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-          </div>
-  
-          <hr class="my-4">
+  <!--<hr class="my-4">-->
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
+  <!-- Top Products-->
+  <h4 class="text-center">Popular Products</h4>
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide">
+            <p class="text-center">product 1</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide">
+            <p class="text-center">product 2</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide">
+            <p class="text-center">product 3</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide">
+            <p class="text-center">product 1</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide">
+            <p class="text-center">product 2</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide">
+            <p class="text-center">product 3</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery1.jpg" alt="1 slide">
+            <p class="text-center">product 1</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery12.jpg" alt="2 slide">
+            <p class="text-center">product 2</p>
+          </div>
+          <div class="col-3"><img class="img-fluid img-thumbnail" src="/img/gallery13.jpg" alt="3 slide">
+            <p class="text-center">product 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <hr class="my-4">
+
+  <!-- Latest Articles-->
+  <h4 class="text-center">Latest Articles</h4>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          <div class="col-7">
+            <img src="/img/diy-organic-skincare-2646.jpg" class="img-fluid">
+          </div>
+          <div class="col-3">
+            <p>DIY organic skincare</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-7">
+            <img src="/img/skincare.jpg" class="img-fluid">
+          </div>
+          <div class="col-3">
+            <p>DIY organic skincare</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-7">
+            <img src="/img/evde-cilt-bakimi.jpg" class="img-fluid">
+          </div>
+          <div class="col-3">
+            <p>DIY organic skincare</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <hr class="my-4">
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
 </body>
 
 </html>
