@@ -80,3 +80,12 @@ body {
 {
     color:black !important;
 }
+
+#sortByBtn {
+    color: black;
+    background-color: white;
+}
+
+.checked {
+    color: orange;
+}
