@@ -70,9 +70,9 @@
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
-            <i class="far fa-heart float-right" align="right"></i>
+            <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
             <!--
-            <span class="fas fa-heart float-right" align="right"></span>
+            <span class="fas fa-heart float-right"></span>
             -->
         </div>
     </div>
@@ -140,6 +140,11 @@
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function favFunction(x) {
+                 x.classList.toggle("fas");
+        
         }
     </script>
 </body>

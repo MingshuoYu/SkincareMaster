@@ -80,27 +80,31 @@
             <div class="card col-5" style="margin: 0.5rem">
                 <img class="card-img-top img-fluid" src="img/cleanser3.jpg" alt="cleanser 1">
                 <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html"><p class="card-title font-weight-bold">FRESH</p></a>
+                    <a href="productDetail.html">
+                        <p class="card-title font-weight-bold">FRESH</p>
+                    </a>
                     <p class="card-text text-truncate">Soy Face Cleanser</p>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
-                    <i class="far fa-heart float-right" align="right"></i>
+                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
                 </div>
             </div>
             <div class="card col-5" style="margin: 0.5rem">
                 <img class="card-img-top img-fluid" src="img/cleanser4.jpg" alt="cleanser 2">
                 <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html"><p class="card-title font-weight-bold">PHILOSOPHY</p></a>
+                    <a href="productDetail.html">
+                        <p class="card-title font-weight-bold">PHILOSOPHY</p>
+                    </a>
                     <p class="card-text text-truncate">Purity Made Simple Cleanser</p>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <i class="far fa-heart float-right" align="right"></i>
+                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
                 </div>
             </div>
         </div>
@@ -110,7 +114,9 @@
             <div class="card col-5" style="margin: 0.5rem">
                 <img class="card-img-top img-fluid" src="img/cleanser1.jpg" alt="cleanser 1">
                 <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html"><p class="card-title font-weight-bold">EVE LOM</p></a>
+                    <a href="productDetail.html">
+                        <p class="card-title font-weight-bold">EVE LOM</p>
+                    </a>
                     <p class="card-title font-weight-bold"></p>
                     <p class="card-text text-truncate">With supporting text below as a natural lead-in to additional
                         content.</p>
@@ -119,13 +125,15 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
-                    <i class="far fa-heart float-right" align="right"></i>
+                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
                 </div>
             </div>
             <div class="card col-5" style="margin: 0.5rem">
                 <img class="card-img-top img-fluid" src="img/cleanser2.jpg" alt="cleanser 2">
                 <div class="card-body" style="padding: 0rem">
-                        <a href="productDetail.html"><p class="card-title font-weight-bold">SK-II</p></a>
+                    <a href="productDetail.html">
+                        <p class="card-title font-weight-bold">SK-II</p>
+                    </a>
                     <p class="card-text text-truncate">With supporting text below as a natural lead-in to additional
                         content.</p>
                     <span class="fa fa-star checked"></span>
@@ -133,39 +141,33 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <i class="far fa-heart float-right" align="right"></i>
+                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
                 </div>
             </div>
-            <!--
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card" style="width: 45%;height:60%">
-                    <img class="card-img-top" src="img/cleanser1.jpg" alt="cleanser 1">
-                    <div class="card-body">
-                        <h5 class="card-title">cleanser1</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card" style="width: 45%;height:60%">
-                    <img class="card-img-top" src="img/cleanser2.jpg" alt="cleanser 2">
-                    <div class="card-body">
-                        <h5 class="card-title">cleanser2</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+            
         </div>
         <script>
             function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementsByClassName("mySidenav").style.width = "250px";
             }
 
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
+
+
+            function favFunction(x) {
+                 x.classList.toggle("fas");
+        
+            }
+
+            /*
+            $('.favIcon').click(function () {
+               
+                    $('i').toggleClass('fas fa-heart float-right');
+                
+            }); 
+            */
         </script>
 </body>
 
