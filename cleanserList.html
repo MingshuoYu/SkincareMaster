@@ -21,31 +21,31 @@
 <body>
     <!--Nav bar-->
     <div>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="ReviewList.html">REVIEW</a>
-                <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
-                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-                <a class="innerSidenav" href="serumList.html">serum</a>
-                <a class="innerSidenav" href="eyeCareList.html">eye care</a>
-                <a class="inSidenav" href="/SkinConcernList.html">Skin Concern</a>
-                <a class="innerSidenav" href="AcneList.html">Acne</a>
-                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-                <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
-                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-                <a href="ArticleList.html">ARTICLE</a>
-                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-                <a href="myAccountPage.html">MY ACCOUNT</a>
-                <a href="Help.html">HELP</a>
-            </div>
-            &nbsp;&nbsp;<a class = "backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-            <a class="title justify-content-center" href="#">SkincareMaster</a>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="ReviewList.html">REVIEW</a>
+            <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <a class="innerSidenav" href="serumList.html">serum</a>
+            <a class="innerSidenav" href="eyeCareList.html">eye care</a>
+            <a class="inSidenav" href="/SkinConcernList.html">Skin Concern</a>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <a href="ArticleList.html">ARTICLE</a>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
+            <a href="Help.html">HELP</a>
         </div>
+        &nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a class="title justify-content-center" href="#">SkincareMaster</a>
+    </div>
     <!-- Search form -->
     <div>
         <form class="form-inline ">
@@ -142,30 +142,21 @@
                     <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
                 </div>
             </div>
-            
+
         </div>
         <script>
             function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-
+                document.getElementById("mySidenav").style.width = "250px";
+            }
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
-
-
             function favFunction(x) {
-                 x.classList.toggle("fas");
-        
+                x.classList.toggle("fas");
+
             }
 
-            /*
-            $('.favIcon').click(function () {
-               
-                    $('i').toggleClass('fas fa-heart float-right');
-                
-            }); 
-            */
+
         </script>
 </body>
 
