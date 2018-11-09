@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <title>Skincare Master</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+
+<body>
+    <!--Nav bar-->
+    <div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="ReviewList.html">REVIEW</a>
+            <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <a class="innerSidenav" href="serumList.html">serum</a>
+            <a class="innerSidenav" href="eyeCareList.html">eye care</a>
+            <a class="inSidenav" href="#">Skin Concern</a>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <a href="ArticleList.html">ARTICLE</a>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
+            <a href="Help.html">HELP</a>
+        </div>
+        &nbsp;&nbsp;<a class="backBtn" href="cleanserList.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a class="title justify-content-center" href="#">SkincareMaster</a>
+    </div>
+    <!-- Search form -->
+    <div>
+        <form class="form-inline ">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
+                aria-label="Search">
+            <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </form>
+    </div>
+
+    <div class="card" style="padding: 0rem">
+        <div class="card-body">
+            <h5 class="card-title">Eve Lom</h5>
+            <img class="card-img-bottom" src="img/cleanser1.jpg" alt="Product Page">
+            <p class="card-text">Description: cleanser</p>
+            <p class="card-text"><small class="text-muted">How to use: once a day to dry skin and twice a day
+                for regular skin</small></p>
+
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <i class="far fa-heart float-right" align="right"></i>
+            <!--
+            <span class="fas fa-heart float-right" align="right"></span>
+            -->
+        </div>
+    </div>
+    
+       <h5 id = "rvTitle"style = "text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REVIEW</h5> 
+        <a id = "rvBtn" href = "writeReview.html" role="button" class="btn btn-secondary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+            <div id = "rvSortBtn"class="row container-fluid justify-content-end dropdown">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" id="sortByBtn">Sort by</button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="productDetail.html">Newest</a>
+                    <a class="dropdown-item" href="productDetail.html">Highest</a>
+                    <a class="dropdown-item" href="productDetail.html">Lowest</a>
+                </div>
+            </div>
+     
+    
+    <div class="reviewSection">
+        <div class="card">
+            <h6 class="card-header">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+            </h6>
+            <div class="card-body">
+                <h5 class="card-title">It works!!!</h5>
+                <p class="card-text">I have used it for 3 months, it cleans my skin so well</p>
+            </div>
+        </div>
+
+        <div class="card">
+                <h6 class="card-header">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                </h6>
+                <div class="card-body">
+                    <h5 class="card-title">It is Ok!</h5>
+                    <p class="card-text">I have used it for one month, have not notice much difference</p>
+                </div>
+            </div>
+
+            <div class="card">
+                    <h6 class="card-header">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                    </h6>
+                    <div class="card-body">
+                        <h5 class="card-title">Like it but pricy</h5>
+                        <p class="card-text">I like the overall performace of this but kinda pricy</p>
+                    </div>
+                </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>

@@ -89,3 +89,6 @@ body {
 .checked {
     color: orange;
 }
+#rvTitle, #rvBtn, #rvSortBtn{
+    display:inline;
+}
