@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
         crossorigin="anonymous">
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,31 +21,31 @@
 <body>
     <!--Nav bar-->
     <div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="ReviewList.html">REVIEW</a>
-            <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
-            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-            <a class="innerSidenav" href="serumList.html">serum</a>
-            <a class="innerSidenav" href="eyeCareList.html">eye care</a>
-            <a class="inSidenav" href="#">Skin Concern</a>
-            <a class="innerSidenav" href="AcneList.html">Acne</a>
-            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-            <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
-            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-            <a href="ArticleList.html">ARTICLE</a>
-            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-            <a href="myAccountPage.html">MY ACCOUNT</a>
-            <a href="Help.html">HELP</a>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="ReviewList.html">REVIEW</a>
+                <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
+                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+                <a class="innerSidenav" href="serumList.html">serum</a>
+                <a class="innerSidenav" href="eyeCareList.html">eye care</a>
+                <a class="inSidenav" href="/SkinConcernList.html">Skin Concern</a>
+                <a class="innerSidenav" href="AcneList.html">Acne</a>
+                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+                <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
+                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+                <a href="ArticleList.html">ARTICLE</a>
+                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+                <a href="myAccountPage.html">MY ACCOUNT</a>
+                <a href="Help.html">HELP</a>
+            </div>
+            &nbsp;&nbsp;<a class = "backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+            <a class="title justify-content-center" href="#">SkincareMaster</a>
         </div>
-        &nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-        <a class="title justify-content-center" href="#">SkincareMaster</a>
-    </div>
     <!-- Search form -->
     <div>
         <form class="form-inline ">
@@ -148,8 +146,8 @@
         </div>
         <script>
             function openNav() {
-                document.getElementsByClassName("mySidenav").style.width = "250px";
-            }
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";

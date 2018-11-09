@@ -55,34 +55,28 @@
         </form>
     </div>
     <!--Login form -->
-        <div>
-            <h5> My SkincareMaster Account</h5>
 
-            <div>
-                <form action = "/myAccountPage.php">
-                  <div class="container" style="background-color:#f1f1f1">
-                  <label for="uname"><b>Username</b></label>
-                  <input type="text" placeholder="Enter Username" name="uname" required>
-                <div>
-                  <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>
-                </div>
-                <div>
-                  <button type="submit">Login</button>
-                  <button type="button" class="cancelbtn">Cancel</button>
-                </div>
-              </div>
-              </form>
-              </div>
+    <form action="action_page.php">
 
-              <div>
-              <form action="/SignUpPage.php">
-              <div class="container">
-              <h6> Not a member yet?</h6>
-              <button type="submit">Sign Up</button>
-            </div>
-          </form>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <a href="index.html"><button type="button" class="btn btn-dark">Login</button></a>
+            <br>
+            <br>
+            <a href="SignUpPage.html"><button type="button" class="btn btn-dark">Sign Up</button></a>
+
         </div>
+
+
+
+    </form>
+
+
     <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
