@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <title>Skincare Master</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+
+<body>
+    <!--Nav bar-->
+    <div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="ReviewList.html">REVIEW</a>
+                <a class="inSidenav" href="ProductTypeList.html">Product Type</a>
+                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+                <a class="innerSidenav" href="serumList.html">serum</a>
+                <a class="innerSidenav" href="eyeCareList.html">eye care</a>
+                <a class="inSidenav" href="/SkinConcernList.html">Skin Concern</a>
+                <a class="innerSidenav" href="AcneList.html">Acne</a>
+                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+                <a class="innerSidenav" href="DiscolorationList.html">Discoloration</a>
+                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+                <a href="ArticleList.html">ARTICLE</a>
+                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+                <a href="myAccountPage.html">MY ACCOUNT</a>
+                <a href="Help.html">HELP</a>
+            </div>
+            &nbsp;&nbsp;<a class = "backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+            <a class="title justify-content-center" href="#">SkincareMaster</a>
+        </div>
+        <!-- Search form -->
+        <div>
+            <form class="form-inline ">
+                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
+                    aria-label="Search">
+                    <a class = "searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </form>
+        </div>
+    
+    <!-- article -->
+    <div class="container-fluid justify-content-center">
+        <img src="img/sun-protection-all-year-long-sunscreen-1.jpg">
+        <h3>Here's Why You Need Sun Protection All Year Long</h3>
+        <p>We know to be careful about the ingredients in our food, 
+            but we're not always so diligent when it comes to the 
+            products we apply on our skin. But since skin is our 
+            largest organ, it's crucial to treat it with respect.<br><br>
+
+            When it comes to ingredients in beauty products, alcohol 
+            is one that appears quite often. Known to dry out skin, 
+            alcohol often gets a bad rap. But there are so many different 
+            types of alcohol, is it possible they aren't all bad? We 
+            talked to some experts to find out whether alcohol really 
+            is bad for the skin.
+            </p>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>
