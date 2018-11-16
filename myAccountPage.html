@@ -59,15 +59,15 @@
 
         <div class="containerLogin">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" id="userNameInput" placeholder="Enter Username" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" id="passwordInput" placeholder="Enter Password" name="psw" required>
 
-            <a href="index.html"><button type="button" class="btn btn-dark">Login</button></a>
+            <button type="button" class="btn btn-dark" onclick="signIn()">Sign In</button>
             <br>
             <br>
-            <a href="SignUpPage.html"><button type="button" class="btn btn-dark">Sign Up</button></a>
+            <button type="button" class="btn btn-dark" onclick="signUp()">Sign Up</button>
 
         </div>
 
@@ -77,12 +77,54 @@
 
 
     <script>
+        $(document).ready(function() {
+        if(sessionStorage.getItem("isLoggedIn") == "yes"){
+            window.location = 'userInfo.html?currentUser='+sessionStorage.getItem("currentUser");
+        }
+        });
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function signUp() {
+            var userNameFiled = document.getElementById('userNameInput').value;
+            var passwordFiled = document.getElementById('passwordInput').value;
+
+            if(localStorage.getItem(userNameFiled)){
+                alert("User already exist!\nPlease sign in.");
+            }
+            else{
+                localStorage.setItem(userNameFiled, passwordFiled);
+                slert("Account created! You may now sign in.");
+            }
+            
+        }
+
+        function signIn() {
+            var userNameField = document.getElementById('userNameInput').value;
+            var passwordField = document.getElementById('passwordInput').value;
+
+            var currentUser = localStorage.getItem(userNameField);
+
+            if(currentUser){
+                if(passwordField != currentUser){
+                    alert("Wrong Password!");
+                }
+                else{
+                    sessionStorage.setItem("isLoggedIn", "yes");
+                    sessionStorage.setItem("currentUser", userNameField);
+                    window.location = 'userInfo.html?currentUser='+userNameField;
+                }
+
+            }
+            else{
+                alert("User does not exist!");
+            }
         }
     </script>
 </body>

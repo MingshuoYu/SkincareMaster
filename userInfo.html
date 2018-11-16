@@ -43,8 +43,9 @@
             <a href="Help.html">HELP</a>
         </div>
         &nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        
         <a class="title justify-content-center" href="#">SkincareMaster</a>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div>
@@ -54,32 +55,29 @@
             <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
     </div>
-    <!--Signup form -->
-        <h4 style="text-align:center; margin: 5%">Skincare Master Insider</h4>
-        <p style="text-align:center; margin: 5%">Welcome on board to be a Skincare Master Insider and start your beauty journey. </p>
 
-    <form action="action_page.php" >
-        <div class="containerSignUp">
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+    <!--page content -->
+    <h1 id="userName"></h1>
+    <button type="button" class="btn btn-dark" onclick="signOut()">Sign Out</button>
 
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-            <div class="clearfix">
-                <a href = "index.html"><button type="button" class="cancelbtn">Cancel</button></a>
-                <a href = "index.html"></a><button type="submit" class="signupbtn">Sign Up</button></a>
-            </div>
-        </div>
-    </form>
 
 
     <script>
+        $(document).ready(function() {
+        var qs = new URLSearchParams(window.location.search);
+        var currentUser = qs.get("currentUser");
+        document.getElementById('userName').innerHTML = "Welcome, " + currentUser +"!";
+        });
+
+        function signOut() {
+            sessionStorage.setItem("isLoggedIn", "no");
+            sessionStorage.setItem("currentUser", "");
+            window.location = 'myAccountPage.html';
+        }
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
