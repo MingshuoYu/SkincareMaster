@@ -24,21 +24,21 @@
     <!--Nav bar-->
     <div>
         <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="">REVIEW</a>
-                <a class="inSidenav" href="">Product Type</a>
-                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-                <a class="inSidenav" href="">Skin Concern</a>
-                <a class="innerSidenav" href="AcneList.html">Acne</a>
-                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-                <a href="">ARTICLE</a>
-                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-                <a href="myAccountPage.html">MY ACCOUNT</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="">REVIEW</a>
+            <a class="inSidenav" href="">Product Type</a>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <a class="inSidenav" href="">Skin Concern</a>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <a href="">ARTICLE</a>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <a class="title justify-content-center" href="#">SkincareMaster</a>
@@ -141,79 +141,51 @@
 
         }
 
+
+
         $(document).ready(function () {
             console.log('hello world');
             //get review list 
             for (var i = 0; i < cleanser.length; i++) {
                 localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
+            }
+            var sourceP = $("#productDetail-template").html();
+            var templateP = Handlebars.compile(sourceP);
+            var parentDivP = $("#templateProduct");
+            // BEGIN - STEP 1
+            var queryParams = new URLSearchParams(window.location.search);
+            var Name = queryParams.get('product');
 
-
-                function openNav() {
-                    document.getElementById("mySidenav").style.width = "250px";
+            for (var i = 0; i < cleanser.length; i++) {
+                var currData = cleanser[i];
+                if (currData.productName == Name) {
+                    var currHTML = templateP(currData);
+                    parentDivP.append(currHTML);
                 }
-                function closeNav() {
-                    document.getElementById("mySidenav").style.width = "0";
-                }
-                function favFunction(x) {
-                    x.classList.toggle("fas");
-
-                    var qs = new URLSearchParams(window.location.search);
-                    var productName = qs.get("product");
-                    var userName = sessionStorage.getItem("currentUser");
-
-                    var favoriteList = JSON.parse(localStorage.getItem(userName + "favoriteList"));
-                    var entry = {
-                        "productName": productName
-                    };
-                    favoriteList.push(entry);
-                    localStorage.setItem(userName + "favoriteList", JSON.stringify(favoriteList));
+            }
 
 
+
+            var sourceR = $("#review-template").html();
+            var templateR = Handlebars.compile(sourceR);
+            var parentDivR = $("#templateReview");
+
+            var rList = JSON.parse(localStorage.getItem(Name + "ReviewList"));
+            if (rList != null) {
+                for (var j = 0; j < rList.length; j++) {
+                    var currData = rList[j];
+                    var currHTMLR = templateR(currData);
+                    parentDivR.append(currHTMLR);
                 }
 
-                $(document).ready(function () {
-                    console.log('hello world');
-                    //get review list 
-                    for (var i = 0; i < cleanser.length; i++) {
-                        localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
-                    }
-                    var sourceP = $("#productDetail-template").html();
-                    var templateP = Handlebars.compile(sourceP);
-                    var parentDivP = $("#templateProduct");
-                    // BEGIN - STEP 1
-                    var queryParams = new URLSearchParams(window.location.search);
-                    var Name = queryParams.get('product');
-
-                    for (var i = 0; i < cleanser.length; i++) {
-                        var currData = cleanser[i];
-                        if (currData.productName == Name) {
-                            var currHTML = templateP(currData);
-                            parentDivP.append(currHTML);
-                        }
-                    }
+            }
 
 
-
-                    var sourceR = $("#review-template").html();
-                    var templateR = Handlebars.compile(sourceR);
-                    var parentDivR = $("#templateReview");
-
-                    var rList = JSON.parse(localStorage.getItem(Name + "ReviewList"));
-                    if (rList != null) {
-                        for (var j = 0; j < rList.length; j++) {
-                            var currData = rList[j];
-                            var currHTMLR = templateR(currData);
-                            parentDivR.append(currHTMLR);
-                        }
-
-                    }
-
-
-                    for (var i = 0; i < reviewList.length; i++) {
-                        var currData = reviewList[i];
-                        var currHTMLR = templateR(currData);
-                        parentDivR.append(currHTMLR);
-                    }
+            for (var i = 0; i < reviewList.length; i++) {
+                var currData = reviewList[i];
+                var currHTMLR = templateR(currData);
+                parentDivR.append(currHTMLR);
+            }
 
 
 
@@ -221,7 +193,7 @@
 
 
 
-                });
+        });
 
 
     </script>
