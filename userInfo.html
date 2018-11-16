@@ -57,8 +57,15 @@
 
 
     <!--page content -->
-    <h1 id="userName"></h1>
+    <h3 id="userName"></h3>
     <button type="button" class="btn btn-dark" onclick="signOut()">Sign Out</button>
+
+    <h4>My Favorite Product</h4>
+    <script id="fav-template" type="text/x-handlebars-template">
+        <li>{{productName}}</li>
+    </script>
+    <ul id="templatedFavoriteList">
+    </ul>
 
 
 
@@ -69,6 +76,18 @@
         var qs = new URLSearchParams(window.location.search);
         var currentUser = qs.get("currentUser");
         document.getElementById('userName').innerHTML = "Welcome, " + currentUser +"!";
+
+        var favoriteList = JSON.parse(localStorage.getItem(currentUser+"favoriteList"));
+
+        var source = $("#fav-template").html();
+        var template = Handlebars.compile(source);
+        var parentDiv = $("#templatedFavoriteList");
+
+        for (var i = 0; i < favoriteList.length; i++) {
+            var curData = favoriteList[i];
+            var curHtml = template(curData);
+            parentDiv.append(curHtml);
+            }
         });
 
         function signOut() {
@@ -85,6 +104,10 @@
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

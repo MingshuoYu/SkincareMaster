@@ -128,6 +128,18 @@
         function favFunction(x) {
             x.classList.toggle("fas");
 
+            var qs = new URLSearchParams(window.location.search);
+            var productName = qs.get("product");
+            var userName = sessionStorage.getItem("currentUser");
+            
+            var favoriteList = JSON.parse(localStorage.getItem(userName+"favoriteList"));
+            var entry = {
+                "productName": productName
+            };
+            favoriteList.push(entry);
+            localStorage.setItem(userName+"favoriteList", JSON.stringify(favoriteList));
+
+        
         }
 
         $(document).ready(function () {
