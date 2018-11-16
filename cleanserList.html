@@ -79,7 +79,7 @@
                 <div class="card col-10" >
                     <img class="card-img-top img-fluid" src="{{picture}}" alt="cleanser{{index}}">
                     <div class="card-body" style="padding: 0rem">
-                        <a href="#" onclick="productDetail()">
+                        <a href="productDetail.html?name={{productName}}">
                             <p class="card-title font-weight-bold">{{company}}</p>
                         </a>
                         <p class="card-text text-truncate">{{productName}}</p>
@@ -110,10 +110,6 @@
         function favFunction(x) {
             x.classList.toggle("fas");
 
-        }
-        function productDetail()
-        {
-            window.location = "productDetail.html" + "?type=cleanser"+"?name="+ {{productName}}
         }
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>

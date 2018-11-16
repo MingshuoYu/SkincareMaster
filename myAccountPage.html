@@ -100,7 +100,9 @@
             }
             else{
                 localStorage.setItem(userNameFiled, passwordFiled);
-                slert("Account created! You may now sign in.");
+                var favoriteList = [];
+                localStorage.setItem(userNameFiled+"favoriteList", JSON.stringify(favoriteList));
+                alert("Account created! You may now sign in.");
             }
             
         }

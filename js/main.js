@@ -68,14 +68,14 @@ $(document).ready(function() {
 
   // to get this to work like in class, comment out the "STEP 1" parts
   // above between BEGIN and END.
-  for (var i = 0; i < complexData.length; i++) {
-    var curData = complexData[i];
-    if (curData.title == projectTitle) {
-      var curHtml = template(curData);
-      parentDiv.append(curHtml);
-    }
-  }
+  // for (var i = 0; i < complexData.length; i++) {
+  //   var curData = complexData[i];
+  //   if (curData.title == projectTitle) {
+  //     var curHtml = template(curData);
+  //     parentDiv.append(curHtml);
+  //   }
+  // }
 
-  */
+  
   // END - STEP 3
 });
