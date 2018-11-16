@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
         crossorigin="anonymous">
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -39,9 +38,10 @@
             <a href="myAccountPage.html">MY ACCOUNT</a>
 
         </div>
-        &nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <a class="title justify-content-center" href="#">SkincareMaster</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div>
@@ -80,12 +80,7 @@
                             <p class="card-title font-weight-bold">{{company}}</p>
                         </a>
                         <p class="card-text text-truncate">{{productName}}</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
+                        <p class="card-text text-truncate">Rating: {{rating}}</p>
                     </div>
                 </div>
             </div>
@@ -99,19 +94,17 @@
 
     <script>
         var cleanser = [
-            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
-            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
-            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
-            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 }
+            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 3, 'index': 1, 'fav': 30 },
+            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 3, 'index': 2, 'fav': 40 },
+            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg' , 'rating': 3, 'index': 3, 'fav': 50 },
+            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 3, 'index': 4, 'fav': 60 }
         ]
         var reviewList = [
-            { 'rating': 5, 'comment': 'It is great' },
-            { 'rating': 1, 'comment': 'It is not OK' },
-            { 'rating': 2, 'comment': 'It is soso' },
-            { 'rating': 3, 'comment': 'It is Ok' }
+            { 'rating': 5, 'comment': 'It is great I love it!' },
+            { 'rating': 2, 'comment': 'It is just fine' },
+            { 'rating': 3, 'comment': 'It is soso' },
+            { 'rating': 2, 'comment': 'It is Ok' }
         ]
-
-
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -129,7 +122,6 @@
             var source = $("#entry-template").html();
             var template = Handlebars.compile(source);
             var parentDiv = $("#templatedProjects");
-
             // now iterate through the complexData list and keep appending:
             for (var i = 0; i < cleanser.length; i++) {
                 var curData = cleanser[i];
