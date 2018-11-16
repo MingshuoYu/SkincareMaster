@@ -47,7 +47,12 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
+.card-title{
+    font-family: fantasy;
+}
+.card-text{
+    font-family: 'Courier New', Courier, monospace;
+}
 .inSidenav {
     font-size: 15px !important;
     padding-left: 30px!important;

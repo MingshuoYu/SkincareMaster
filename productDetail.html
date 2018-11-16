@@ -44,9 +44,10 @@
             <a href="myAccountPage.html">MY ACCOUNT</a>
             <a href="Help.html">HELP</a>
         </div>
-        &nbsp;&nbsp;<a class="backBtn" href="cleanserList.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <a class="title justify-content-center" href="#">SkincareMaster</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div>
@@ -78,110 +79,125 @@
 
 
     <h5 id="rvTitle" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REVIEW</h5>
-    <a id="rvBtn" href="writeReview.html" role="button" class="btn btn-secondary btn-sm"><i class="fas fa-pencil-alt"></i></a>
-    <div id="rvSortBtn" class="row container-fluid justify-content-end dropdown">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" id="sortByBtn">Sort by</button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="productDetail.html">Newest</a>
-            <a class="dropdown-item" href="productDetail.html">Highest</a>
-            <a class="dropdown-item" href="productDetail.html">Lowest</a>
-        </div>
-    </div>
+    <button id="rvBtn" href="#" role="button" class="btn btn-secondary btn-sm" onclick="writeReview()"><i class="fas fa-pencil-alt"></i></button>
+       
 
-    <script id="review-template" type="text/x-handlebars-template">
+        <script id="review-template" type="text/x-handlebars-template">
         <div class="card">
                 <h6 class="card-header">
-                    <p> Rating : {{rating}} </p>
+                    <p> Rating : {{'rating'}} </p>
                 </h6>
                 <div class="card-body">
-                    <p class="card-text">{{comment}}</p>
+                    <p class="card-text">{{'comment'}}</p>
                 </div>
         </div>
     </script>
 
-    <div id="templateReview">
+        <div id="templateReview">
 
-    </div>
+        </div>
 
-    <script>
-        var cleanser = [
-            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
-            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
-            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
-            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 }
-        ]
-        var reviewList = [
-            { 'rating': 5, 'comment': 'It is great' },
-            { 'rating': 1, 'comment': 'It is not OK' },
-            { 'rating': 2, 'comment': 'It is soso' },
-            { 'rating': 3, 'comment': 'It is Ok' }
-        ]
+        <script>
+            var cleanser = [
+                { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
+                { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
+                { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
+                { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 }
+            ]
+            var reviewList = [
+                { 'rating': 5, 'comment': 'It is great' },
+                { 'rating': 1, 'comment': 'It is not OK' },
+                { 'rating': 2, 'comment': 'It is soso' },
+                { 'rating': 3, 'comment': 'It is Ok' }
+            ]
 
+            function writeReview() {
+                var qs = new URLSearchParams(window.location.search);
+                var productName = qs.get("product");
 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-        function favFunction(x) {
-            x.classList.toggle("fas");
-
-            var qs = new URLSearchParams(window.location.search);
-            var productName = qs.get("product");
-            var userName = sessionStorage.getItem("currentUser");
-            
-            var favoriteList = JSON.parse(localStorage.getItem(userName+"favoriteList"));
-            var entry = {
-                "productName": productName
-            };
-            favoriteList.push(entry);
-            localStorage.setItem(userName+"favoriteList", JSON.stringify(favoriteList));
-
-        
-        }
-
-        $(document).ready(function () {
-            console.log('hello world');
-            //get review list 
-            for (var i = 0; i < cleanser.length; i++) {
-                localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
+                window.location = 'writeReview.html?product=' + productName;
             }
-            var sourceP = $("#productDetail-template").html();
-            var templateP = Handlebars.compile(sourceP);
-            var parentDivP = $("#templateProduct");
-            // BEGIN - STEP 1
-            var queryParams = new URLSearchParams(window.location.search);
-            var Name = queryParams.get('product');
 
-            for (var i = 0; i < cleanser.length; i++) {
-                var currData = cleanser[i];
-                if (currData.productName == Name) {
-                    var currHTML = templateP(currData);
-                    parentDivP.append(currHTML);
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            function favFunction(x) {
+                x.classList.toggle("fas");
+
+                var qs = new URLSearchParams(window.location.search);
+                var productName = qs.get("product");
+                var userName = sessionStorage.getItem("currentUser");
+
+                var favoriteList = JSON.parse(localStorage.getItem(userName + "favoriteList"));
+                var entry = {
+                    "productName": productName
+                };
+                favoriteList.push(entry);
+                localStorage.setItem(userName + "favoriteList", JSON.stringify(favoriteList));
+
+
+            }
+
+            $(document).ready(function () {
+                console.log('hello world');
+                //get review list 
+                for (var i = 0; i < cleanser.length; i++) {
+                    localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
                 }
-            }
+                var sourceP = $("#productDetail-template").html();
+                var templateP = Handlebars.compile(sourceP);
+                var parentDivP = $("#templateProduct");
+                // BEGIN - STEP 1
+                var queryParams = new URLSearchParams(window.location.search);
+                var Name = queryParams.get('product');
 
-            
+                for (var i = 0; i < cleanser.length; i++) {
+                    var currData = cleanser[i];
+                    if (currData.productName == Name) {
+                        var currHTML = templateP(currData);
+                        parentDivP.append(currHTML);
+                    }
+                }
 
-            var sourceR = $("#review-template").html();
-            var templateR = Handlebars.compile(sourceR);
-            var parentDivR = $("#templateReview");
 
-            for (var i = 0; i < reviewList.length; i++) {
-                var currData = reviewList[i];
-                var currHTMLR = templateR(currData);
-                parentDivR.append(currHTMLR);
-            }
 
-        });
-        
+                var sourceR = $("#review-template").html();
+                var templateR = Handlebars.compile(sourceR);
+                var parentDivR = $("#templateReview");
 
-    </script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/handlebars-v4.0.11.js"></script>
+                var rList = JSON.parse(localStorage.getItem(Name + "ReviewList"));
+                if (rList != null) {
+                    for (var j = 0; j < rList.length; j++) {
+                        var currData = rList[j];
+                        var currHTMLR = templateR(currData);
+                        parentDivR.append(currHTMLR);
+                    }
+
+                }
+
+
+                for (var i = 0; i < reviewList.length; i++) {
+                    var currData = reviewList[i];
+                    var currHTMLR = templateR(currData);
+                    parentDivR.append(currHTMLR);
+                }
+
+
+
+
+
+
+
+            });
+
+
+        </script>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/handlebars-v4.0.11.js"></script>
 
 </body>
 

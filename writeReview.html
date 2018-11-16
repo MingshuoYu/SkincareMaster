@@ -44,53 +44,58 @@
             <a href="myAccountPage.html">MY ACCOUNT</a>
             <a href="Help.html">HELP</a>
         </div>
-        &nbsp;&nbsp;<a class="backBtn" href="productDetail.html" onclick="errorPreventFunction();"><i class="fas fa-chevron-left"
-                style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <a class="title justify-content-center" href="#">SkincareMaster</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div>
-        <form class="form-inline ">
+        <form class="form-inline">
             <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
                 aria-label="Search">
             <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
     </div>
 
-    <div class="card" style="padding: 0rem">
-        <div class="card-body">
-            <h5 class="card-title">Rate this product: </h5>
-            <img class="card-img-bottom" src="img/cleanser1.jpg" alt="Product Page">
-            <p class="card-text">
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-            </p>
-            <div class="form-group">
-                <label for="Review">Review:</label>
-                <textarea class="form-control" rows="5" id="comment" placeholder="Write your review:"></textarea>
-                <br>
-                <a href = "productDetail.html"><button type="button" 
-                class="btn btn-outline-secondary" onclick="myFunction()">Submit</button></a>
-            </div>
-            <!--
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                  </div>
-            -->
-
+    <script id="writeReview-template" type="text/x-handlebars-template">
+        <div class="card" style="padding: 0rem">
+                <div class="card-body">
+                    <h5 class="card-title"> Rate this product: </h5>
+                    <img class="card-img-bottom" src="{{picture}}" alt="Product Page">
+                    <p class="form">
+                        <label for="Rating">Rating:</label>
+                        <input type = "text" class="form-control" rows="1" id="rating" placeholder="Rate from 0 to 5">
+                    </p>
+                    <div class="form-group">
+                        <label for="Review">Review:</label>
+                        <input type = "text" class="form-control" rows="5" id="comment" placeholder="Write your review:">
+                        <br>
+                        <button type="button" class="btn btn-outline-secondary" onclick="submitReview()">Submit</button>
+                    </div>
+                </div>
         </div>
+    </script>
+
+    <div id = "templateWriteReview">
+
     </div>
 
-
+    
 
     <script>
+        var cleanser = [
+            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
+            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
+            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
+            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 }
+        ]
+        var reviewList = [
+            { 'rating': 5, 'comment': 'It is great' },
+            { 'rating': 1, 'comment': 'It is not OK' },
+            { 'rating': 2, 'comment': 'It is soso' },
+            { 'rating': 3, 'comment': 'It is Ok' }
+        ]
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -104,14 +109,68 @@
         function errorPreventFunction() {
             var r = confirm("Warning: You will lose what you have edited so far");
             if (r == true) {
-                
+
             } else {
                 event.preventDefault();
             }
-            
+
         }
-        
+        function submitReview() {
+            var qs = new URLSearchParams(window.location.search);
+            var productName = qs.get("product");
+            var reviewList = JSON.parse(localStorage.getItem(productName+'ReviewList'));
+            if (reviewList == null) reviewList = [];
+            var rating = document.getElementById('rating').value;
+            var comment = document.getElementById('comment').value;
+            var entry = {
+                "rating":rating,
+                "comment":comment
+            }
+            reviewList.push(entry);
+            localStorage.setItem(productName+'ReviewList', JSON.stringify(reviewList));
+            
+
+            window.location = 'productDetail.html?product='+productName;
+        }
+
+        $(document).ready(function () {
+            console.log('hello world');
+            //get review list 
+            for (var i = 0; i < cleanser.length; i++) {
+                localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
+            }
+            var sourceP = $("#writeReview-template").html();
+            var templateP = Handlebars.compile(sourceP);
+            var parentDivP = $("#templateWriteReview");
+            // BEGIN - STEP 1
+            var queryParams = new URLSearchParams(window.location.search);
+            var Name = queryParams.get('product');
+
+            for (var i = 0; i < cleanser.length; i++) {
+                var currData = cleanser[i];
+                if (currData.productName == Name) {
+                    var currHTML = templateP(currData);
+                    parentDivP.append(currHTML);
+                }
+            }
+
+            
+            /*
+            var sourceR = $("#review-template").html();
+            var templateR = Handlebars.compile(sourceR);
+            var parentDivR = $("#templateReview");
+
+            for (var i = 0; i < reviewList.length; i++) {
+                var currData = reviewList[i];
+                var currHTMLR = templateR(currData);
+                parentDivR.append(currHTMLR);
+            }*/
+
+        });
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>
