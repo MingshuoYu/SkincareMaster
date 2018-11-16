@@ -1,7 +1,14 @@
 body {
     font-family: "Lato", sans-serif;
 }
-
+#templatedProjects {
+    border:none;
+    margin: 0% !important;
+}
+.cleanser .row{
+    margin: 0% !important;
+    align-content: center !important;
+}
 .sidenav {
     height: 100%;
     width: 0;
