@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
-            
+
         </div>
         &nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
@@ -71,93 +71,55 @@
         </div>
     </div>
 
-
-
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-center">
         <div class="row justify-content-center">
-            <div class="card col-5" style="margin: 0.5rem">
-                <img class="card-img-top img-fluid" src="img/cleanser3.jpg" alt="cleanser 1">
-                <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html">
-                        <p class="card-title font-weight-bold">FRESH</p>
-                    </a>
-                    <p class="card-text text-truncate">Soy Face Cleanser</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
+            <!--handle bar tamplate!-->
+            <script id="entry-template" type="text/x-handlebars-template">
+            <div class = "cleanser"  id="cleanser{{index}}">
+                <div class="card col-10" >
+                    <img class="card-img-top img-fluid" src="{{picture}}" alt="cleanser{{index}}">
+                    <div class="card-body" style="padding: 0rem">
+                        <a href="#" onclick="productDetail()">
+                            <p class="card-title font-weight-bold">{{company}}</p>
+                        </a>
+                        <p class="card-text text-truncate">{{productName}}</p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
+                    </div>
                 </div>
             </div>
-            <div class="card col-5" style="margin: 0.5rem">
-                <img class="card-img-top img-fluid" src="img/cleanser4.jpg" alt="cleanser 2">
-                <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html">
-                        <p class="card-title font-weight-bold">PHILOSOPHY</p>
-                    </a>
-                    <p class="card-text text-truncate">Purity Made Simple Cleanser</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
-                </div>
+            </script>
+
+            <div id="templatedProjects">
             </div>
         </div>
+    </div>
 
 
-        <div class="row justify-content-center">
-            <div class="card col-5" style="margin: 0.5rem">
-                <img class="card-img-top img-fluid" src="img/cleanser1.jpg" alt="cleanser 1">
-                <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html">
-                        <p class="card-title font-weight-bold">EVE LOM</p>
-                    </a>
-                    <p class="card-title font-weight-bold"></p>
-                    <p class="card-text text-truncate">With supporting text below as a natural lead-in to additional
-                        content.</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
-                </div>
-            </div>
-            <div class="card col-5" style="margin: 0.5rem">
-                <img class="card-img-top img-fluid" src="img/cleanser2.jpg" alt="cleanser 2">
-                <div class="card-body" style="padding: 0rem">
-                    <a href="productDetail.html">
-                        <p class="card-title font-weight-bold">SK-II</p>
-                    </a>
-                    <p class="card-text text-truncate">With supporting text below as a natural lead-in to additional
-                        content.</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
-                </div>
-            </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        function favFunction(x) {
+            x.classList.toggle("fas");
 
-        </div>
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-            function favFunction(x) {
-                x.classList.toggle("fas");
-
-            }
-
-
-        </script>
+        }
+        function productDetail()
+        {
+            window.location = "productDetail.html" + "?type=cleanser"+"?name="+ {{productName}}
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
