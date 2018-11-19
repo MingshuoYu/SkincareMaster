@@ -54,44 +54,48 @@
     <!-- sort by drop down-->
 
     <div class="row container-fluid justify-content-end">
-        <div class="dropdown">
+        <p id="sortBy"></p>
+        <div class="dropdown" style="padding-left: 10px">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" id="sortByBtn">
                 Sort by
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="cleanerListSort.html">Top-Rated</a>
-                <a class="dropdown-item" href="cleanserList.html">Newest</a>
-                <a class="dropdown-item" href="cleanserList.html">Most popular</a>
+                <a class="dropdown-item" onclick="sortByRating()">Top-Rated</a>
+                <a class="dropdown-item" onclick="sortByFav()">Most popular</a>
+                <a class="dropdown-item" onclick="sortByPrice()">Price low-high</a>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="card col-5" style="margin: 0.5rem">
+            <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
+            <div class="card-body" style="padding: 0rem">
+                <a href="productDetail.html?type=acne&product={{productName}}">
+                    <p class="card-title font-weight-bold">{{company}}</p>
+                </a>
+                <p class="card-text text-truncate">{{productName}}</p>
+                <p class="card-text text-truncate">Rating: {{rating}}</p>
+                <p class="card-text text-truncate">Favorites: {{fav}}</p>
+                <p class="card-text text-truncate">${{price}}</p>
+            </div>
+        </div>
+    </script>
+
+    <div class="container-fluid" id="content">
         <div class="row justify-content-center" id="templatedProducts">
-            <script id="entry-template" type="text/x-handlebars-template">
-                    <div class="card col-5" style="margin: 0.5rem">
-                        <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
-                        <div class="card-body" style="padding: 0rem">
-                            <a href="productDetail.html?type=acne&product={{productName}}">
-                                <p class="card-title font-weight-bold">{{company}}</p>
-                            </a>
-                            <p class="card-text text-truncate">{{productName}}</p>
-                            <p class="card-text text-truncate">Rating: {{rating}}</p>
-                            
-                        </div>
-                    </div>
-            </script>
+
         </div>
     </div>
 
 
     <script>
         var cleanser = [
-            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 3, 'index': 1, 'fav': 30 },
-            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 3, 'index': 2, 'fav': 40 },
-            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 3, 'index': 3, 'fav': 50 },
-            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 3, 'index': 4, 'fav': 60 }
+            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 4, 'index': 1, 'fav': 30, 'price': 44.00 },
+            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 3, 'index': 2, 'fav': 40, 'price': 78 },
+            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 3, 'index': 3, 'fav': 50, 'price': 33 },
+            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60, 'price': 120 }
         ]
         // var reviewList = [
         //     { 'rating': 5, 'comment': 'It is great I love it!' },
@@ -142,6 +146,61 @@
                 alert("Sorry, item is not found :(");
             }
         }
+
+        function sortByRating() {
+            document.getElementById("sortBy").innerHTML = "Top-Rated";
+            cleanser.sort(function(a, b) {
+                return b.rating - a.rating;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < cleanser.length; i++) {
+                var curData = cleanser[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+            }
+        }
+
+        function sortByFav() {
+            document.getElementById("sortBy").innerHTML = "Most Popular";
+            cleanser.sort(function(a, b) {
+                return b.fav - a.fav;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < cleanser.length; i++) {
+                var curData = cleanser[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+            }
+        }
+
+        function sortByPrice() {
+            document.getElementById("sortBy").innerHTML = "Price low-high";
+            cleanser.sort(function(a, b) {
+                return a.price - b.price;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < cleanser.length; i++) {
+                var curData = cleanser[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+            }
+        }
+
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

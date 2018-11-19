@@ -52,30 +52,48 @@
             </form>
           </div>
 
-    <div class="container-fluid">
-        <div class="row justify-content-center" id="templatedProducts">
+          <div class="row container-fluid justify-content-end">
+                <p id="sortBy"></p>
+                <div class="dropdown" style="padding-left: 10px">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" id="sortByBtn">
+                        Sort by
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="sortByRating()">Top-Rated</a>
+                        <a class="dropdown-item" onclick="sortByFav()">Most popular</a>
+                        <a class="dropdown-item" onclick="sortByPrice()">Price low-high</a>
+                    </div>
+                </div>
+            </div>
+
             <script id="entry-template" type="text/x-handlebars-template">
-                        <div class="card col-5" style="margin: 0.5rem">
-                            <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
-                            <div class="card-body" style="padding: 0rem">
-                                <a href="productDetail.html?product={{productName}}">
-                                    <p class="card-title font-weight-bold">{{company}}</p>
-                                </a>
-                                <p class="card-text text-truncate">{{productName}}</p>
-                                <p class="card-text text-truncate">Rating: {{rating}}</p>
-                                
-                            </div>
-                        </div>
-                    </script>
-        </div>
-    </div>
+                <div class="card col-5" style="margin: 0.5rem">
+                    <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
+                    <div class="card-body" style="padding: 0rem">
+                        <a href="productDetail.html?type=acne&product={{productName}}">
+                            <p class="card-title font-weight-bold">{{company}}</p>
+                        </a>
+                        <p class="card-text text-truncate">{{productName}}</p>
+                        <p class="card-text text-truncate">Rating: {{rating}}</p>
+                        <p class="card-text text-truncate">Favorites: {{fav}}</p>
+                        <p class="card-text text-truncate">${{price}}</p>
+                    </div>
+                </div>
+            </script>
+        
+            <div class="container-fluid" id="content">
+                <div class="row justify-content-center" id="templatedProducts">
+        
+                </div>
+            </div>
 
     <script>
         var Blackhead = [
-            { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': '$24.00' },
-            { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': '$39.00' },
-            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':'$60.00'},
-            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':'$34.00' }
+            { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': 24 },
+            { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask II', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': 39 },
+            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':60},
+            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':34 }
         ]
 
         $(document).ready(function () {
@@ -118,6 +136,60 @@
             }
             else {
                 alert("Sorry, item is not found :(");
+            }
+        }
+
+        function sortByRating() {
+            document.getElementById("sortBy").innerHTML = "Top-Rated";
+            Blackhead.sort(function(a, b) {
+                return b.rating - a.rating;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < Blackhead.length; i++) {
+                var curData = Blackhead[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+            }
+        }
+
+        function sortByFav() {
+            document.getElementById("sortBy").innerHTML = "Most Popular";
+            Blackhead.sort(function(a, b) {
+                return b.fav - a.fav;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < Blackhead.length; i++) {
+                var curData = Blackhead[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+            }
+        }
+
+        function sortByPrice() {
+            document.getElementById("sortBy").innerHTML = "Price low-high";
+            Blackhead.sort(function(a, b) {
+                return a.price - b.price;
+            });
+            document.getElementById('templatedProducts').innerHTML = "";
+
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < Blackhead.length; i++) {
+                var curData = Blackhead[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
             }
         }
     </script>

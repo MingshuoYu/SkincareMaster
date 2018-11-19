@@ -49,9 +49,13 @@ body {
 }
 .card-title{
     font-family: fantasy;
+    margin: 0% !important;
+    
 }
 .card-text{
     font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    margin: 0%;
 }
 .inSidenav {
     font-size: 15px !important;
