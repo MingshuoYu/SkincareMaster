@@ -44,13 +44,12 @@
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
-    <div>
-        <form class="form-inline ">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
-                aria-label="Search">
-            <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
-        </form>
-    </div>
+    <div class="row justify-content-center">
+            <form class="example col-10">
+                <input type="text" placeholder="Search.." name="search" id="searchField">
+                <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+            </form>
+          </div>
     <!--Login form -->
 
     <form action="action_page.php">
@@ -63,8 +62,7 @@
             <input type="password" id="passwordInput" placeholder="Enter Password" name="psw" required>
 
             <button type="button" class="btn btn-dark" onclick="signIn()">Sign In</button>
-            <br>
-            <br>
+            
             <button type="button" class="btn btn-dark" onclick="signUp()">Sign Up</button>
 
         </div>
@@ -90,16 +88,20 @@
         }
 
         function signUp() {
-            var userNameFiled = document.getElementById('userNameInput').value;
-            var passwordFiled = document.getElementById('passwordInput').value;
+            var userNameField = document.getElementById('userNameInput').value;
+            var passwordField = document.getElementById('passwordInput').value;
 
-            if(localStorage.getItem(userNameFiled)){
+            if(userNameField == "" || passwordField == ""){
+                alert("All fields must be filed")
+                return;
+            }
+            if(localStorage.getItem(userNameField)){
                 alert("User already exist!\nPlease sign in.");
             }
             else{
-                localStorage.setItem(userNameFiled, passwordFiled);
+                localStorage.setItem(userNameField, passwordField);
                 var favoriteList = [];
-                localStorage.setItem(userNameFiled+"favoriteList", JSON.stringify(favoriteList));
+                localStorage.setItem(userNameField+"favoriteList", JSON.stringify(favoriteList));
                 alert("Account created! You may now sign in.");
             }
             
@@ -109,6 +111,10 @@
             var userNameField = document.getElementById('userNameInput').value;
             var passwordField = document.getElementById('passwordInput').value;
 
+            if(userNameField == "" || passwordField == ""){
+                alert("All fields must be filed")
+                return;
+            }
             var currentUser = localStorage.getItem(userNameField);
 
             if(currentUser){
@@ -118,12 +124,40 @@
                 else{
                     sessionStorage.setItem("isLoggedIn", "yes");
                     sessionStorage.setItem("currentUser", userNameField);
-                    window.location = 'userInfo.html?currentUser='+userNameField;
+
+                    // if user is coming form a product detail page
+                    var qs = new URLSearchParams(window.location.search);
+                    var productName = qs.get("product");
+                    if(productName){
+                        window.location = 'writeReview.html?product=' + productName;
+                    }
+                    else{
+                        window.location = 'userInfo.html?currentUser='+userNameField;
+                    }
                 }
 
             }
             else{
                 alert("User does not exist!");
+            }
+        }
+
+        function search() {
+            var input = document.getElementById("searchField").value;
+            var productList = JSON.parse(localStorage.getItem("productList"));
+            var found = false;
+            for(var i = 0; i < productList.length; i++){
+                var currData = productList[i];
+                
+                if (currData == input) {
+                found = true;
+                }
+            }
+            if(found){
+                window.location = "productDetail.html?product=" + input;
+            }
+            else {
+                alert("Sorry, item is not found :(");
             }
         }
     </script>

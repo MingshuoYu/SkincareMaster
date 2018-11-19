@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -40,18 +40,10 @@
                 <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
                 <a href="myAccountPage.html">MY ACCOUNT</a>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" onclick="errorPreventFunction()"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
         <a class="title justify-content-center" href="#">SkincareMaster</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-    </div>
-    <!-- Search form -->
-    <div>
-        <form class="form-inline">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
-                aria-label="Search">
-            <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
-        </form>
     </div>
 
     <script id="writeReview-template" type="text/x-handlebars-template">
@@ -132,9 +124,9 @@
         function errorPreventFunction() {
             var r = confirm("Warning: You will lose what you have edited so far");
             if (r == true) {
-
+                window.location = "javascript:history.back()";
             } else {
-                event.preventDefault();
+                return;
             }
 
         }
@@ -191,6 +183,25 @@
             }*/
 
         });
+
+        function search() {
+            var input = document.getElementById("searchField").value;
+            var productList = JSON.parse(localStorage.getItem("productList"));
+            var found = false;
+            for(var i = 0; i < productList.length; i++){
+                var currData = productList[i];
+                
+                if (currData == input) {
+                found = true;
+                }
+            }
+            if(found){
+                window.location = "productDetail.html?product=" + input;
+            }
+            else {
+                alert("Sorry, item is not found :(");
+            }
+        }
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

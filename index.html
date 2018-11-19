@@ -3,13 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, iinitial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Skincare Master</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -44,10 +45,12 @@
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
   </div>
   <!-- Search form -->
-  <div>
-    <form class="form-inline ">
-      <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser" aria-label="Search">
-      <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+
+
+  <div class="row justify-content-center">
+    <form class="example col-10">
+        <input type="text" placeholder="Search.." name="search" id="searchField">
+        <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
     </form>
   </div>
 
@@ -168,12 +171,71 @@
   <hr class="my-4">
 
   <script>
+        var products = [
+            //cleanser
+            { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
+            { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
+            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
+            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 },
+
+            // moisturizer
+            { 'company': 'LA MER', 'productName': 'Crème de la Mer', 'picture': 'img/moist3.jpeg', 'rating': 4, 'fav': 40 },
+            { 'company': "KIEHL'S SINCE 1851", 'productName': 'Ultra Facial Cream', 'picture': 'img/moist1.jpeg', 'rating': 3, 'fav': 50 },
+            { 'company': 'CLINIQUE', 'productName': 'moisturizing lotion', 'picture': 'img/moist4.jpeg', 'rating': 5, 'fav': 70 },
+            { 'company': 'SK-II', 'productName': 'R.N.A. POWER Face Cream', 'picture': 'img/moist2.jpg', 'rating': 4, 'fav': 60 },
+
+            // acne
+            { 'company': 'KATE SOMERVILLE', 'productName': 'EradiKate™ Acne Treatment', 'picture': 'img/Acne1.JPG', 'rating': 4, 'fav': 40, 'price': '$26.00' },
+            { 'company': 'MURAD', 'productName': 'Rapid Relief Acne Spot Treatment', 'picture': 'img/Acne2.JPG', 'rating': 3, 'fav': 30, 'price': '$22.00' },
+
+            //lotion
+            { 'company': 'DONNA KARAN', 'productName': 'Donna Karan Cashmere Mist Body set', 'picture': 'img/lotion1.jpeg', 'rating': 3, 'fav': 30, 'price':'$30.00' },
+            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':'$34.00' },
+            { 'company': 'PHILOSOPHY', 'productName': 'Pure Grace Perfumed Body Lotion', 'picture': 'img/lotion3.jpeg', 'rating': 5, 'fav': 60, 'price':'$39.00' },
+
+            //blackhead
+            { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': '$24.00' },
+            { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask II', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': '$39.00' },
+
+            //wrinkle
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price':'$98.00' },
+            { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price':'$98.00' },
+            { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price':'$88.00' }
+        ]
+        $(document).ready(function () {
+          var productList = [];
+          for(var i = 0; i < products.length; i++){
+            productList.push(products[i].productName);
+          }
+          localStorage.setItem("productList", JSON.stringify(productList));
+        });
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     }
 
     function closeNav() {
       document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function search() {
+      var input = document.getElementById("searchField").value;
+      var productList = JSON.parse(localStorage.getItem("productList"));
+      var found = false;
+      for(var i = 0; i < productList.length; i++){
+        var currData = productList[i];
+        
+        if (currData == input) {
+          found = true;
+        }
+      }
+      if(found){
+        window.location = "productDetail.html?product=" + input;
+      }
+      else {
+        alert("Sorry, item is not found :(");
+      }
     }
   </script>
 </body>

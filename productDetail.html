@@ -46,13 +46,12 @@
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
-    <div>
-        <form class="form-inline ">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
-                aria-label="Search">
-            <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
-        </form>
-    </div>
+    <div class="row justify-content-center">
+            <form class="example col-10">
+                <input type="text" placeholder="Search.." name="search" id="searchField">
+                <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+            </form>
+          </div>
 
     <script id="productDetail-template" type="text/x-handlebars-template">
         <div class="card" style="padding: 0rem">  
@@ -139,7 +138,14 @@
             var qs = new URLSearchParams(window.location.search);
             var productName = qs.get("product");
 
-            window.location = 'writeReview.html?product=' + productName;
+            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+                window.location = 'writeReview.html?product=' + productName;
+            }
+            else{
+                if(confirm("Please sign in first!")){
+                    window.location = 'myAccountPage.html?product=' + productName;
+                }
+            }
         }
 
         function openNav() {
@@ -221,6 +227,25 @@
 
         });
 
+
+        function search() {
+            var input = document.getElementById("searchField").value;
+            var productList = JSON.parse(localStorage.getItem("productList"));
+            var found = false;
+            for(var i = 0; i < productList.length; i++){
+                var currData = productList[i];
+                
+                if (currData == input) {
+                found = true;
+                }
+            }
+            if(found){
+                window.location = "productDetail.html?product=" + input;
+            }
+            else {
+                alert("Sorry, item is not found :(");
+            }
+        }
 
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>
