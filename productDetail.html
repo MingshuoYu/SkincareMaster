@@ -94,12 +94,40 @@
     </div>
 
     <script>
-        var cleanser = [
+        var products = [
+            //cleanser
             { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 5, 'index': 1, 'fav': 30 },
             { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 4, 'index': 2, 'fav': 40 },
             { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 5, 'index': 3, 'fav': 50 },
-            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 }
+            { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 5, 'index': 4, 'fav': 60 },
+
+            // moisturizer
+            { 'company': 'LA MER', 'productName': 'Crème de la Mer', 'picture': 'img/moist3.jpeg', 'rating': 4, 'fav': 40 },
+            { 'company': "KIEHL'S SINCE 1851", 'productName': 'Ultra Facial Cream', 'picture': 'img/moist1.jpeg', 'rating': 3, 'fav': 50 },
+            { 'company': 'CLINIQUE', 'productName': 'moisturizing lotion', 'picture': 'img/moist4.jpeg', 'rating': 5, 'fav': 70 },
+            { 'company': 'SK-II', 'productName': 'R.N.A. POWER Face Cream', 'picture': 'img/moist2.jpg', 'rating': 4, 'fav': 60 },
+
+            // acne
+            { 'company': 'KATE SOMERVILLE', 'productName': 'EradiKate™ Acne Treatment', 'picture': 'img/Acne1.JPG', 'rating': 4, 'fav': 40, 'price': '$26.00' },
+            { 'company': 'MURAD', 'productName': 'Rapid Relief Acne Spot Treatment', 'picture': 'img/Acne2.JPG', 'rating': 3, 'fav': 30, 'price': '$22.00' },
+
+            //lotion
+            { 'company': 'DONNA KARAN', 'productName': 'Donna Karan Cashmere Mist Body set', 'picture': 'img/lotion1.jpeg', 'rating': 3, 'fav': 30, 'price':'$30.00' },
+            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':'$34.00' },
+            { 'company': 'PHILOSOPHY', 'productName': 'Pure Grace Perfumed Body Lotion', 'picture': 'img/lotion3.jpeg', 'rating': 5, 'fav': 60, 'price':'$39.00' },
+
+            //blackhead
+            { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': '$24.00' },
+            { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask II', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': '$39.00' },
+
+            //wrinkle
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price':'$98.00' },
+            { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price':'$98.00' },
+            { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price':'$88.00' }
         ]
+
         var reviewList = [
             { 'rating': 5, 'comment': 'It is great' },
             { 'rating': 1, 'comment': 'It is not OK' },
@@ -144,47 +172,45 @@
 
 
         $(document).ready(function () {
-            console.log('hello world');
-            //get review list 
-            for (var i = 0; i < cleanser.length; i++) {
-                localStorage.setItem(cleanser[i]['productName'], JSON.stringify(reviewList));
+            // get url parameters
+            var queryParams = new URLSearchParams(window.location.search);
+            var Name = queryParams.get('product');
+            var type = queryParams.get('type');
+
+            //create a review list for curr product in local storage
+            var reviews = localStorage.getItem(Name);
+            if (!reviews) {
+                localStorage.setItem(Name, JSON.stringify(reviewList));
             }
+            
+            // product template variables
             var sourceP = $("#productDetail-template").html();
             var templateP = Handlebars.compile(sourceP);
             var parentDivP = $("#templateProduct");
-            // BEGIN - STEP 1
-            var queryParams = new URLSearchParams(window.location.search);
-            var Name = queryParams.get('product');
 
-            for (var i = 0; i < cleanser.length; i++) {
-                var currData = cleanser[i];
+            // print out curr product
+            for (var i = 0; i < products.length; i++) {
+                var currData = products[i];
                 if (currData.productName == Name) {
                     var currHTML = templateP(currData);
                     parentDivP.append(currHTML);
                 }
             }
 
-
-
+            // review template variables
             var sourceR = $("#review-template").html();
             var templateR = Handlebars.compile(sourceR);
             var parentDivR = $("#templateReview");
 
-            var rList = JSON.parse(localStorage.getItem(Name + "ReviewList"));
+            // print out curr products reviews
+            var rList = JSON.parse(localStorage.getItem(Name));
             if (rList != null) {
-                for (var j = 0; j < rList.length; j++) {
+                for (var j = rList.length-1; j >= 0; j--) {
                     var currData = rList[j];
                     var currHTMLR = templateR(currData);
                     parentDivR.append(currHTMLR);
                 }
 
-            }
-
-
-            for (var i = 0; i < reviewList.length; i++) {
-                var currData = reviewList[i];
-                var currHTMLR = templateR(currData);
-                parentDivR.append(currHTMLR);
             }
 
 

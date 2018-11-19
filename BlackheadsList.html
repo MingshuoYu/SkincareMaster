@@ -21,74 +21,77 @@
 <body>
     <!--Nav bar-->
     <div>
-            <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="">REVIEW</a>
-                    <a class="inSidenav" href="">Product Type</a>
-                    <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-                    <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-                    <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-                    <a class="inSidenav" href="">Skin Concern</a>
-                    <a class="innerSidenav" href="AcneList.html">Acne</a>
-                    <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-                    <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-                    <a href="">ARTICLE</a>
-                    <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-                    <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-                    <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-                    <a href="myAccountPage.html">MY ACCOUNT</a>
-                
-            </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-            <a class="title justify-content-center" href="#">SkincareMaster</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="">REVIEW</a>
+            <a class="inSidenav" href="">Product Type</a>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <a class="inSidenav" href="">Skin Concern</a>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <a href="">ARTICLE</a>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
+
         </div>
-        <!-- Search form -->
-        <div>
-            <form class="form-inline ">
-                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
-                    aria-label="Search">
-                    <a class = "searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
-            </form>
-        </div>
-   
-            <div class="container-fluid">
-                    <div class="row justify-content-center">
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
+        <a class="title justify-content-center" href="#">SkincareMaster</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    </div>
+    <!-- Search form -->
+    <div>
+        <form class="form-inline ">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search eg: cleanser"
+                aria-label="Search">
+            <a class="searchBtn" href="cleanserList.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </form>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center" id="templatedProducts">
+            <script id="entry-template" type="text/x-handlebars-template">
                         <div class="card col-5" style="margin: 0.5rem">
-                            <img class="card-img-top img-fluid" src="img/BlackHead1.JPG" alt="Black 1">
+                            <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
                             <div class="card-body" style="padding: 0rem">
-                                <a href="index.html">
-                                    <p class="card-title font-weight-bold">CLINIQUE</p>
+                                <a href="productDetail.html?product={{productName}}">
+                                    <p class="card-title font-weight-bold">{{company}}</p>
                                 </a>
-                                <p class="card-text text-truncate">Blackhead Solutions 7 Day Scrub</p>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
+                                <p class="card-text text-truncate">{{productName}}</p>
+                                <p class="card-text text-truncate">Rating: {{rating}}</p>
+                                
                             </div>
                         </div>
-                        <div class="card col-5" style="margin: 0.5rem">
-                            <img class="card-img-top img-fluid" src="img/BlackHead2.JPG" alt="Black 2">
-                            <div class="card-body" style="padding: 0rem">
-                                <a href="index.html">
-                                    <p class="card-title font-weight-bold">CAUDALIE</p>
-                                </a>
-                                <p class="card-text text-truncate">Instant Detox Mask</p>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-   
+                    </script>
+        </div>
+    </div>
+
     <script>
+        var Blackhead = [
+            { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': '$24.00' },
+            { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': '$39.00' },
+            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':'$34.00' }
+        ]
+
+        $(document).ready(function () {
+            // compile the template
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < Blackhead.length; i++) {
+                var curData = Blackhead[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+
+            }
+        });
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -97,10 +100,13 @@
             document.getElementById("mySidenav").style.width = "0";
         }
         function favFunction(x) {
-                x.classList.toggle("fas");
+            x.classList.toggle("fas");
 
-            }
+        }
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>

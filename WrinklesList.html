@@ -53,42 +53,46 @@
     </div>
 
     <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="card col-5" style="margin: 0.5rem">
-                    <img class="card-img-top img-fluid" src="img/Wrinkle1.JPG" alt="Wrinkle 1">
-                    <div class="card-body" style="padding: 0rem">
-                        <a href="index.html">
-                            <p class="card-title font-weight-bold">ESTEE LAUDER</p>
-                        </a>
-                        <p class="card-text text-truncate">Night Repair</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
+            <div class="row justify-content-center" id="templatedProducts">
+                <script id="entry-template" type="text/x-handlebars-template">
+                    <div class="card col-5" style="margin: 0.5rem">
+                        <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
+                        <div class="card-body" style="padding: 0rem">
+                            <a href="productDetail.html?type=acne&product={{productName}}">
+                                <p class="card-title font-weight-bold">{{company}}</p>
+                            </a>
+                            <p class="card-text text-truncate">{{productName}}</p>
+                            <p class="card-text text-truncate">Rating: {{rating}}</p>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="card col-5" style="margin: 0.5rem">
-                    <img class="card-img-top img-fluid" src="img/Wrinkle2.JPG" alt="Wrinkle 2">
-                    <div class="card-body" style="padding: 0rem">
-                        <a href="index.html">
-                            <p class="card-title font-weight-bold">KATE SOMERVILLE</p>
-                        </a>
-                        <p class="card-text text-truncate">Instant Detox Mask</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <i id="favIcon" onclick="favFunction(this)" class="far fa-heart float-right "></i>
-                    </div>
-                </div>
+                </script>
             </div>
-    </div>
+        </div>
 
    
     <script>
+        var wrinkle = [
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price':'$98.00' },
+            { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price':'$60.00'},
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price':'$98.00' },
+            { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price':'$88.00' }
+        ]
+
+        $(document).ready(function () {
+            // compile the template
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedProducts");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < wrinkle.length; i++) {
+                var curData = wrinkle[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+
+            }
+        });
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -101,6 +105,9 @@
 
             }
     </script>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>

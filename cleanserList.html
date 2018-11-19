@@ -21,21 +21,21 @@
     <!--Nav bar-->
     <div>
         <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="">REVIEW</a>
-                <a class="inSidenav" href="">Product Type</a>
-                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-                <a class="inSidenav" href="">Skin Concern</a>
-                <a class="innerSidenav" href="AcneList.html">Acne</a>
-                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-                <a href="">ARTICLE</a>
-                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-                <a href="myAccountPage.html">MY ACCOUNT</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="">REVIEW</a>
+            <a class="inSidenav" href="">Product Type</a>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <a class="inSidenav" href="">Skin Concern</a>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <a href="">ARTICLE</a>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
 
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
@@ -68,26 +68,21 @@
         </div>
     </div>
 
-    <div class="container-fluid justify-content-center">
-        <div class="row justify-content-center">
-            <!--handle bar tamplate!-->
+    <div class="container-fluid">
+        <div class="row justify-content-center" id="templatedProducts">
             <script id="entry-template" type="text/x-handlebars-template">
-            <div class = "cleanser"  id="cleanser{{index}}">
-                <div class="card col-10" >
-                    <img class="card-img-top img-fluid" src="{{picture}}" alt="cleanser{{index}}">
-                    <div class="card-body" style="padding: 0rem">
-                        <a href="productDetail.html?product={{productName}}">
-                            <p class="card-title font-weight-bold">{{company}}</p>
-                        </a>
-                        <p class="card-text text-truncate">{{productName}}</p>
-                        <p class="card-text text-truncate">Rating: {{rating}}</p>
+                    <div class="card col-5" style="margin: 0.5rem">
+                        <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
+                        <div class="card-body" style="padding: 0rem">
+                            <a href="productDetail.html?type=acne&product={{productName}}">
+                                <p class="card-title font-weight-bold">{{company}}</p>
+                            </a>
+                            <p class="card-text text-truncate">{{productName}}</p>
+                            <p class="card-text text-truncate">Rating: {{rating}}</p>
+                            
+                        </div>
                     </div>
-                </div>
-            </div>
             </script>
-
-            <div id="templatedProjects">
-            </div>
         </div>
     </div>
 
@@ -96,15 +91,15 @@
         var cleanser = [
             { 'company': 'Fresh', 'productName': 'Soy Face Cleanser', 'picture': 'img/cleanser3.jpg', 'rating': 3, 'index': 1, 'fav': 30 },
             { 'company': 'PHILOSOPHY', 'productName': 'Purity Made Simple Cleanser', 'picture': 'img/cleanser4.jpg', 'rating': 3, 'index': 2, 'fav': 40 },
-            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg' , 'rating': 3, 'index': 3, 'fav': 50 },
+            { 'company': 'EVE LOM', 'productName': 'Cleanser/Traitement De Nettoyage', 'picture': 'img/cleanser1.jpg', 'rating': 3, 'index': 3, 'fav': 50 },
             { 'company': 'SK-II', 'productName': 'Facial Treatment Cleanser', 'picture': 'img/cleanser2.jpg', 'rating': 3, 'index': 4, 'fav': 60 }
         ]
-        var reviewList = [
-            { 'rating': 5, 'comment': 'It is great I love it!' },
-            { 'rating': 2, 'comment': 'It is just fine' },
-            { 'rating': 3, 'comment': 'It is soso' },
-            { 'rating': 2, 'comment': 'It is Ok' }
-        ]
+        // var reviewList = [
+        //     { 'rating': 5, 'comment': 'It is great I love it!' },
+        //     { 'rating': 2, 'comment': 'It is just fine' },
+        //     { 'rating': 3, 'comment': 'It is soso' },
+        //     { 'rating': 2, 'comment': 'It is Ok' }
+        // ]
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -117,11 +112,10 @@
         }
         // Call this function when the page loads (the "ready" event)
         $(document).ready(function () {
-            console.log('hello world');
             // compile the template
             var source = $("#entry-template").html();
             var template = Handlebars.compile(source);
-            var parentDiv = $("#templatedProjects");
+            var parentDiv = $("#templatedProducts");
             // now iterate through the complexData list and keep appending:
             for (var i = 0; i < cleanser.length; i++) {
                 var curData = cleanser[i];
