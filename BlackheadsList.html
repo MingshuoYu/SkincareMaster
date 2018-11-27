@@ -70,16 +70,17 @@
 
     <script id="entry-template" type="text/x-handlebars-template">
                 <div class="card col-5" style="margin: 0.5rem">
+                    <a href="productDetail.html?type=acne&product={{productName}}">
                     <img class="card-img-top img-fluid" src="{{picture}}" alt="#">
                     <div class="card-body" style="padding: 0rem">
-                        <a href="productDetail.html?type=acne&product={{productName}}">
-                            <p class="card-title font-weight-bold">{{company}}</p>
-                        </a>
+                        <p class="card-title font-weight-bold">{{company}}</p>
+                        
                         <p class="card-text text-truncate">{{productName}}</p>
                         <p class="card-text text-truncate">Rating: {{rating}}</p>
-                        <p class="card-text text-truncate">Favorites: {{fav}}</p>
+                        <p class="card-text text-truncate">Favorites: {{fav}} k</p>
                         <p class="card-text text-truncate">${{price}}</p>
                     </div>
+                    </a>
                 </div>
             </script>
 
