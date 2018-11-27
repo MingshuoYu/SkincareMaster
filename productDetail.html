@@ -165,9 +165,15 @@
                 var userName = sessionStorage.getItem("currentUser");
 
                 var favoriteList = JSON.parse(localStorage.getItem(userName + "favoriteList"));
+                for(var i = 0; i < favoriteList.length; i++){
+                    if(favoriteList[i].productName == productName){
+                        return;
+                    }
+                }
                 var entry = {
                     "productName": productName
                 };
+                
                 favoriteList.push(entry);
                 localStorage.setItem(userName + "favoriteList", JSON.stringify(favoriteList));
             }
