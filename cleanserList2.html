@@ -70,6 +70,7 @@
     </div>
 
     <script id="entry-template" type="text/x-handlebars-template">
+        <a href="productDetail.html?type=acne&product={{productName}}">
         <div class="card" style="margin: 0.5rem;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;padding: 10px;">
             <div class="row">
                 <div class="col-3">
@@ -77,9 +78,9 @@
                 </div>
                 <div class="col-9">
                     <div class="card-body" style="padding: 0rem">
-                        <a href="productDetail.html?type=acne&product={{productName}}">
+                        
                             <p class="card-title font-weight-bold">{{company}}</p>
-                        </a>
+                        
                         <p class="card-text text-truncate">{{productName}}</p>
                         <p class="card-text text-truncate">Rating: {{rating}}</p>
                         <p class="card-text text-truncate">Favorites: {{fav}}</p>
@@ -88,6 +89,7 @@
                 </div>
             </div>
         </div>
+    </a>
     </script>
 
     <div class="container-fluid" id="content">
