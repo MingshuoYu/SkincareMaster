@@ -37,6 +37,7 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
+            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign Out</button>
         </div>
         <a class="backBtn" href="javascript:history.back()">
             <i class="fas fa-chevron-left" style='font-size:24px'></i>
@@ -55,14 +56,15 @@
 
 
     <!--page content -->
-    <h3 id="userName"></h3>
-    <button type="button" class="btn btn-dark" onclick="signOut()">Sign Out</button>
+    
+    <h3 id="userName" style="margin-left:20px"></h3>
+    
 
-    <h4>My Favorite Product</h4>
+    <h4 style="margin-left:20px">My Favorite Product</h4>
     <script id="fav-template" type="text/x-handlebars-template">
         <li>{{productName}}</li>
     </script>
-    <ul id="templatedFavoriteList">
+    <ul id="templatedFavoriteList" style="margin-left:20px">
     </ul>
 
 
@@ -86,6 +88,11 @@
                 var curHtml = template(curData);
                 parentDiv.append(curHtml);
             }
+
+            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+                document.getElementById("signOutBtn").style.visibility="visible";
+            }
+
         });
 
         function signOut() {

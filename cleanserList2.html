@@ -36,6 +36,7 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
+            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign Out</button>
         </div>
         <a class="backBtn" href="javascript:history.back()">
             <i class="fas fa-chevron-left" style='font-size:24px'></i>
@@ -70,27 +71,25 @@
     </div>
 
     <script id="entry-template" type="text/x-handlebars-template">
-        <a href="productDetail.html?type=acne&product={{productName}}">
-        <div class="card" style="margin: 0.5rem;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;padding: 10px;">
-            <div class="row">
-                <div class="col-3">
-                    <img class="card-img-top" src="{{picture}}" alt="#">
-                </div>
-                <div class="col-9">
-                    <div class="card-body" style="padding: 0rem">
-                        
+            <a href="productDetail.html?type=acne&product={{productName}}">
+            <div class="card" style="margin: 0.5rem;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;padding: 10px;">
+                <div class="row">
+                    <div class="col-3">
+                        <img class="card-img-top" src="{{picture}}" alt="#">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-body" style="padding: 0rem">
                             <p class="card-title font-weight-bold">{{company}}</p>
-                        
-                        <p class="card-text text-truncate">{{productName}}</p>
-                        <p class="card-text text-truncate">Rating: {{rating}}</p>
-                        <p class="card-text text-truncate">Favorites: {{fav}}</p>
-                        <p class="card-text text-truncate">${{price}}</p>
+                            <p class="card-text text-truncate">{{productName}}</p>
+                            <p class="card-text text-truncate">Rating: {{rating}}</p>
+                            <p class="card-text text-truncate">Favorites: {{fav}}</p>
+                            <p class="card-text text-truncate">${{price}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </a>
-    </script>
+        </a>
+        </script>
 
     <div class="container-fluid" id="content">
         <div class="row justify-content-center" id="templatedProducts">
@@ -134,6 +133,9 @@
                 var curHtml = template(curData);
                 parentDiv.append(curHtml);
 
+            }
+            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+                document.getElementById("signOutBtn").style.visibility="visible";
             }
         });
 
@@ -226,7 +228,12 @@
                 parentDiv.append(curHtml);
             }
         }
-
+        
+        function signOut() {
+            sessionStorage.setItem("isLoggedIn", "no");
+            sessionStorage.setItem("currentUser", "");
+            window.location = 'myAccountPage.html';
+        }
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
