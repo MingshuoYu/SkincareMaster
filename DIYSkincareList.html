@@ -37,6 +37,7 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
+            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign Out</button>
         </div>
         <a class="backBtn" href="javascript:history.back()">
             <i class="fas fa-chevron-left" style='font-size:24px'></i>
@@ -100,6 +101,9 @@
                 parentDiv.append(curHtml);
 
             }
+            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+                document.getElementById("signOutBtn").style.visibility="visible";
+            }
         });
         function search() {
             var input = document.getElementById("searchField").value;
@@ -135,6 +139,11 @@
             else {
                 alert("Sorry, item is not found :(");
             }
+        }
+        function signOut() {
+            sessionStorage.setItem("isLoggedIn", "no");
+            sessionStorage.setItem("currentUser", "");
+            window.location = 'myAccountPage.html';
         }
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>

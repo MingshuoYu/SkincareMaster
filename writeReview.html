@@ -39,6 +39,7 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
+            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign Out</button>
         </div>
         <a class="backBtn" href="javascript:history.back()">
             <i class="fas fa-chevron-left" style='font-size:24px'></i>
@@ -140,6 +141,21 @@
             if (reviewList == null) reviewList = [];
             var rating = document.getElementById('rating').value;
             var comment = document.getElementById('comment').value;
+            
+            if (rating == "" || comment == "") {
+                alert("All fields must be filed")
+                return;
+            }
+
+            if(!Number.isInteger(parseInt(rating))){
+                alert("Rating must be an integer from 0 to 5!")
+                return;
+            }
+            if(rating < 0 || rating > 5){
+                alert("Rating must be a number from 0 to 5!");
+                return;
+            }
+
             var entry = {
                 "rating": rating,
                 "comment": comment
@@ -149,6 +165,12 @@
 
 
             window.location = 'productDetail.html?product=' + productName;
+        }
+
+        function signOut() {
+            sessionStorage.setItem("isLoggedIn", "no");
+            sessionStorage.setItem("currentUser", "");
+            window.location = 'myAccountPage.html';
         }
 
         $(document).ready(function () {
@@ -172,6 +194,10 @@
                 }
             }
 
+            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+                document.getElementById("signOutBtn").style.visibility="visible";
+            }
+
 
             /*
             var sourceR = $("#review-template").html();
@@ -186,42 +212,8 @@
 
         });
 
-        function search() {
-            var input = document.getElementById("searchField").value;
-            var productList = JSON.parse(localStorage.getItem("productList"));
-            var typeList = JSON.parse(localStorage.getItem("typeList"));
-            var foundProduct = false;
-            var foundType = false;
-            var link;
-            var product;
-            for (var i = 0; i < productList.length; i++) {
-                var currData = productList[i];
-
-                if (currData.toUpperCase() === input.toUpperCase()) {
-                    foundProduct = true;
-                    product = productList[i];
-                }
-            }
-            if (!foundProduct) {
-                for (var i = 0; i < typeList.length; i++) {
-                    var currType = typeList[i].type;
-                    if (currType.toUpperCase() === input.toUpperCase()) {
-                        foundType = true;
-                        link = typeList[i].link;
-                    }
-                }
-            }
-            if (foundProduct) {
-                window.location = "productDetail.html?product=" + product;
-            }
-            else if (foundType) {
-                window.location = link;
-            }
-            else {
-                alert("Sorry, item is not found :(");
-            }
-        }
     </script>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/handlebars-v4.0.11.js"></script>
