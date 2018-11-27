@@ -25,33 +25,35 @@
     <div>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="">REVIEW</a>
-            <a class="inSidenav" href="">Product Type</a>
+            <p>REVIEW</p>
+            <p class="inSidenav">Product Type</p>
             <a class="innerSidenav" href="cleanserList.html">cleanser</a>
             <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
             <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-            <a class="inSidenav" href="">Skin Concern</a>
+            <p class="inSidenav">Skin Concern</p>
             <a class="innerSidenav" href="AcneList.html">Acne</a>
             <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
             <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-            <a href="">ARTICLE</a>
+            <p>ARTICLE</p>
             <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="javascript:history.back()"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <a class="title justify-content-center" href="#">SkincareMaster</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a class="backBtn" href="javascript:history.back()">
+            <i class="fas fa-chevron-left" style='font-size:24px'></i>
+        </a>
+        <a class="title justify-content-center" href="index.html">SkincareMaster</a>
+
+        <span class="manuButton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div class="row justify-content-center">
-            <form class="example col-10">
-                <input type="text" placeholder="Search.." name="search" id="searchField">
-                <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
-            </form>
-          </div>
+        <form class="example col-10">
+            <input type="text" placeholder="Search.." name="search" id="searchField">
+            <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+        </form>
+    </div>
 
     <script id="productDetail-template" type="text/x-handlebars-template">
         <div class="card" style="padding: 0rem">  
@@ -111,20 +113,20 @@
             { 'company': 'MURAD', 'productName': 'Rapid Relief Acne Spot Treatment', 'picture': 'img/Acne2.JPG', 'rating': 3, 'fav': 30, 'price': 22 },
 
             //lotion
-            { 'company': 'DONNA KARAN', 'productName': 'Donna Karan Cashmere Mist Body set', 'picture': 'img/lotion1.jpeg', 'rating': 3, 'fav': 30, 'price':30 },
-            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price':60},
-            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price':34 },
-            { 'company': 'PHILOSOPHY', 'productName': 'Pure Grace Perfumed Body Lotion', 'picture': 'img/lotion3.jpeg', 'rating': 5, 'fav': 60, 'price':39 },
+            { 'company': 'DONNA KARAN', 'productName': 'Donna Karan Cashmere Mist Body set', 'picture': 'img/lotion1.jpeg', 'rating': 3, 'fav': 30, 'price': 30 },
+            { 'company': 'LORD JONES', 'productName': 'High CBD Formula Body Lotion', 'picture': 'img/lotion2.jpeg', 'rating': 4, 'fav': 40, 'price': 60 },
+            { 'company': "L'OCCITANE", 'productName': 'Shea Butter Rich Body Lotion', 'picture': 'img/lotion4.png', 'rating': 3, 'fav': 50, 'price': 34 },
+            { 'company': 'PHILOSOPHY', 'productName': 'Pure Grace Perfumed Body Lotion', 'picture': 'img/lotion3.jpeg', 'rating': 5, 'fav': 60, 'price': 39 },
 
             //blackhead
             { 'company': 'CLINIQUE', 'productName': 'Blackhead Solutions 7 Day Scrub', 'picture': 'img/BlackHead2.JPG', 'rating': 4, 'fav': 30, 'price': 24 },
             { 'company': 'CAUDALIE', 'productName': 'Instant Detox Mask II', 'picture': 'img/BlackHead1.JPG', 'rating': 5, 'fav': 40, 'price': 39 },
 
             //wrinkle
-            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price':98 },
-            { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price':60},
-            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price':98 },
-            { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price':88 }
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price': 98 },
+            { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price': 60 },
+            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price': 98 },
+            { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price': 88 }
         ]
 
         var reviewList = [
@@ -138,11 +140,11 @@
             var qs = new URLSearchParams(window.location.search);
             var productName = qs.get("product");
 
-            if(sessionStorage.getItem("isLoggedIn") == "yes"){
+            if (sessionStorage.getItem("isLoggedIn") == "yes") {
                 window.location = 'writeReview.html?product=' + productName;
             }
-            else{
-                if(confirm("Please sign in first!")){
+            else {
+                if (confirm("Please sign in first!")) {
                     window.location = 'myAccountPage.html?product=' + productName;
                 }
             }
@@ -188,7 +190,7 @@
             if (!reviews) {
                 localStorage.setItem(Name, JSON.stringify(reviewList));
             }
-            
+
             // product template variables
             var sourceP = $("#productDetail-template").html();
             var templateP = Handlebars.compile(sourceP);
@@ -211,7 +213,7 @@
             // print out curr products reviews
             var rList = JSON.parse(localStorage.getItem(Name));
             if (rList != null) {
-                for (var j = rList.length-1; j >= 0; j--) {
+                for (var j = rList.length - 1; j >= 0; j--) {
                     var currData = rList[j];
                     var currHTMLR = templateR(currData);
                     parentDivR.append(currHTMLR);
@@ -231,16 +233,33 @@
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
-            var found = false;
-            for(var i = 0; i < productList.length; i++){
+            var typeList = JSON.parse(localStorage.getItem("typeList"));
+            var foundProduct = false;
+            var foundType = false;
+            var link;
+            var product;
+            for (var i = 0; i < productList.length; i++) {
                 var currData = productList[i];
-                
-                if (currData == input) {
-                found = true;
+
+                if (currData.toUpperCase() === input.toUpperCase()) {
+                    foundProduct = true;
+                    product = productList[i];
                 }
             }
-            if(found){
-                window.location = "productDetail.html?product=" + input;
+            if (!foundProduct) {
+                for (var i = 0; i < typeList.length; i++) {
+                    var currType = typeList[i].type;
+                    if (currType.toUpperCase() === input.toUpperCase()) {
+                        foundType = true;
+                        link = typeList[i].link;
+                    }
+                }
+            }
+            if (foundProduct) {
+                window.location = "productDetail.html?product=" + product;
+            }
+            else if (foundType) {
+                window.location = link;
             }
             else {
                 alert("Sorry, item is not found :(");

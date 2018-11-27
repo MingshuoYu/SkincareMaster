@@ -31,6 +31,16 @@ body {
     transition: 0.3s;
 }
 
+.sidenav p {
+    padding: 4px 4px 4px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    margin-bottom: 0 !important;
+}
+
 .sidenav a:hover {
     color: #f1f1f1;
 }
@@ -72,7 +82,7 @@ body {
 .title{
     color:black;
     padding-left: 80px;
-    
+    font-size: 25px;
     font-family: Verdana;
     
 }
@@ -91,6 +101,7 @@ body {
 }
 .backBtn{
     color:black !important;
+    padding-left: 10px;
 }
 .searchBtn
 {
@@ -284,4 +295,14 @@ span.stars span {
     clear: both;
     display: table;
   }
+
+  .mainManuButton {
+    padding-left:60px;
+  }
+
+  .manuButton {
+    padding-left:40px;
+  }
+
+  
 

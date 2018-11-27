@@ -22,34 +22,36 @@
     <!--Nav bar-->
     <div>
         <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="">REVIEW</a>
-                <a class="inSidenav" href="">Product Type</a>
-                <a class="innerSidenav" href="cleanserList.html">cleanser</a>
-                <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
-                <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-                <a class="inSidenav" href="">Skin Concern</a>
-                <a class="innerSidenav" href="AcneList.html">Acne</a>
-                <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
-                <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-                <a href="">ARTICLE</a>
-                <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
-                <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
-                <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
-                <a href="myAccountPage.html">MY ACCOUNT</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <p>REVIEW</p>
+            <p class="inSidenav">Product Type</p>
+            <a class="innerSidenav" href="cleanserList.html">cleanser</a>
+            <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
+            <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
+            <p class="inSidenav">Skin Concern</p>
+            <a class="innerSidenav" href="AcneList.html">Acne</a>
+            <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
+            <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
+            <p>ARTICLE</p>
+            <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
+            <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
+            <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
+            <a href="myAccountPage.html">MY ACCOUNT</a>
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="index.html"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <a class="title justify-content-center" href="#">SkincareMaster</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a class="backBtn" href="javascript:history.back()">
+            <i class="fas fa-chevron-left" style='font-size:24px'></i>
+        </a>
+        <a class="title justify-content-center" href="index.html">SkincareMaster</a>
+
+        <span class="manuButton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div class="row justify-content-center">
-            <form class="example col-10">
-                <input type="text" placeholder="Search.." name="search" id="searchField">
-                <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
-            </form>
-          </div>
+        <form class="example col-10">
+            <input type="text" placeholder="Search.." name="search" id="searchField">
+            <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+        </form>
+    </div>
 
 
     <!--page content -->
@@ -68,21 +70,21 @@
 
 
     <script>
-        $(document).ready(function() {
-        var qs = new URLSearchParams(window.location.search);
-        var currentUser = qs.get("currentUser");
-        document.getElementById('userName').innerHTML = "Welcome, " + currentUser +"!";
+        $(document).ready(function () {
+            var qs = new URLSearchParams(window.location.search);
+            var currentUser = qs.get("currentUser");
+            document.getElementById('userName').innerHTML = "Welcome, " + currentUser + "!";
 
-        var favoriteList = JSON.parse(localStorage.getItem(currentUser+"favoriteList"));
+            var favoriteList = JSON.parse(localStorage.getItem(currentUser + "favoriteList"));
 
-        var source = $("#fav-template").html();
-        var template = Handlebars.compile(source);
-        var parentDiv = $("#templatedFavoriteList");
+            var source = $("#fav-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedFavoriteList");
 
-        for (var i = 0; i < favoriteList.length; i++) {
-            var curData = favoriteList[i];
-            var curHtml = template(curData);
-            parentDiv.append(curHtml);
+            for (var i = 0; i < favoriteList.length; i++) {
+                var curData = favoriteList[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
             }
         });
 
@@ -103,16 +105,33 @@
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
-            var found = false;
-            for(var i = 0; i < productList.length; i++){
+            var typeList = JSON.parse(localStorage.getItem("typeList"));
+            var foundProduct = false;
+            var foundType = false;
+            var link;
+            var product;
+            for (var i = 0; i < productList.length; i++) {
                 var currData = productList[i];
-                
-                if (currData == input) {
-                found = true;
+
+                if (currData.toUpperCase() === input.toUpperCase()) {
+                    foundProduct = true;
+                    product = productList[i];
                 }
             }
-            if(found){
-                window.location = "productDetail.html?product=" + input;
+            if (!foundProduct) {
+                for (var i = 0; i < typeList.length; i++) {
+                    var currType = typeList[i].type;
+                    if (currType.toUpperCase() === input.toUpperCase()) {
+                        foundType = true;
+                        link = typeList[i].link;
+                    }
+                }
+            }
+            if (foundProduct) {
+                window.location = "productDetail.html?product=" + product;
+            }
+            else if (foundType) {
+                window.location = link;
             }
             else {
                 alert("Sorry, item is not found :(");

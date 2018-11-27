@@ -22,34 +22,35 @@
     <div>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="">REVIEW</a>
-            <a class="inSidenav" href="">Product Type</a>
+            <p>REVIEW</p>
+            <p class="inSidenav">Product Type</p>
             <a class="innerSidenav" href="cleanserList.html">cleanser</a>
             <a class="innerSidenav" href="moisturizerList.html">moisturizer</a>
             <a class="innerSidenav" href="bodyLotionList.html">body lotion</a>
-            <a class="inSidenav" href="">Skin Concern</a>
+            <p class="inSidenav">Skin Concern</p>
             <a class="innerSidenav" href="AcneList.html">Acne</a>
             <a class="innerSidenav" href="BlackheadsList.html">Blackheads</a>
             <a class="innerSidenav" href="WrinklesList.html">Wrinkles</a>
-            <a href="">ARTICLE</a>
+            <p>ARTICLE</p>
             <a class="innerSidenav" href="DIYSkincareList.html">DIY Skincare</a>
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
-
         </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;<a class="backBtn" href="javascript:history.back()"><i class="fas fa-chevron-left" style='font-size:24px'></i></a>&nbsp;&nbsp;&nbsp;
-        <a class="title justify-content-center" href="#">SkincareMaster</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a class="backBtn" href="javascript:history.back()">
+            <i class="fas fa-chevron-left" style='font-size:24px'></i>
+        </a>
+        <a class="title justify-content-center" href="index.html">SkincareMaster</a>
+
+        <span class="manuButton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
     </div>
     <!-- Search form -->
     <div class="row justify-content-center">
-            <form class="example col-10">
-                <input type="text" placeholder="Search.." name="search" id="searchField">
-                <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
-            </form>
-          </div>
+        <form class="example col-10">
+            <input type="text" placeholder="Search.." name="search" id="searchField">
+            <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+        </form>
+    </div>
 
     <!-- sort by drop down-->
 
@@ -131,16 +132,33 @@
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
-            var found = false;
-            for(var i = 0; i < productList.length; i++){
+            var typeList = JSON.parse(localStorage.getItem("typeList"));
+            var foundProduct = false;
+            var foundType = false;
+            var link;
+            var product;
+            for (var i = 0; i < productList.length; i++) {
                 var currData = productList[i];
-                
-                if (currData == input) {
-                found = true;
+
+                if (currData.toUpperCase() === input.toUpperCase()) {
+                    foundProduct = true;
+                    product = productList[i];
                 }
             }
-            if(found){
-                window.location = "productDetail.html?product=" + input;
+            if (!foundProduct) {
+                for (var i = 0; i < typeList.length; i++) {
+                    var currType = typeList[i].type;
+                    if (currType.toUpperCase() === input.toUpperCase()) {
+                        foundType = true;
+                        link = typeList[i].link;
+                    }
+                }
+            }
+            if (foundProduct) {
+                window.location = "productDetail.html?product=" + product;
+            }
+            else if (foundType) {
+                window.location = link;
             }
             else {
                 alert("Sorry, item is not found :(");
@@ -149,7 +167,7 @@
 
         function sortByRating() {
             document.getElementById("sortBy").innerHTML = "Top-Rated";
-            cleanser.sort(function(a, b) {
+            cleanser.sort(function (a, b) {
                 return b.rating - a.rating;
             });
             document.getElementById('templatedProducts').innerHTML = "";
@@ -167,7 +185,7 @@
 
         function sortByFav() {
             document.getElementById("sortBy").innerHTML = "Most Popular";
-            cleanser.sort(function(a, b) {
+            cleanser.sort(function (a, b) {
                 return b.fav - a.fav;
             });
             document.getElementById('templatedProducts').innerHTML = "";
@@ -185,7 +203,7 @@
 
         function sortByPrice() {
             document.getElementById("sortBy").innerHTML = "Price low-high";
-            cleanser.sort(function(a, b) {
+            cleanser.sort(function (a, b) {
                 return a.price - b.price;
             });
             document.getElementById('templatedProducts').innerHTML = "";
