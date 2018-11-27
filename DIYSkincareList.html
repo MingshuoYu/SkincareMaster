@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -54,31 +54,32 @@
     </div>
 
     <!-- articles -->
+    <script id="entry-template" type="text/x-handlebars-template">
     <div class="container-fluid">
-        <a href="articleDetail.html">
+        <a href="articleDetail.html?type=DIY&title={{title}}">
             <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/sun-protection-all-year-long-sunscreen-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{picture}}" alt="Card image cap">
                 <div class="card-body">
-                    <h6 class="card-text">Here's Why You Need Sun Protection All Year Long</h6>
+                    <h6 class="card-text">{{title}}</h6>
                 </div>
             </div>
         </a>
     </div>
+    </script>
 
     <div class="container-fluid">
-        <a href="articleDetail.html">
-            <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/alcohol-in-beauty-products-intro.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h6 class="card-text">How Bad, Really, Is Alcohol in Your Skin Care?</h6>
-                </div>
-            </div>
-        </a>
+        <div id="templatedArticles">
+            
+        </div>
     </div>
 
 
 
     <script>
+        var DIY = [
+            { 'title': 'The Calming Honey Mask', 'picture': 'img/honey.jpg', 'text': " 2 tablespoons of pure honey 1 teaspoon of cinnamon 1 wedge of fresh lemon. Warm the honey in the microwave for a few seconds, then combine it with the cinnamon and the juice of a lemon wedge into a small bowl. Cinnamon is known to reduce inflammation and redness—plus, it sops up excess oil when applied topically. Lemon acid not only helps exfoliate your skin, but can minimize the appearance of dark spots, too. Gently massage the mixture onto your face and leave on for about 15-20 minutes, then rinse off." },
+            { 'title': 'The Exfoliating Brown Sugar Scrub Mask', 'picture': 'img/exfoliate.jpg', 'text': '2 tablespoons of brown sugar 2 tablespoons of virgin coconut oil. Brown sugar sloughs off dead skin while coconut oil packs it with moisture. The result? A soft and glowy finish. Use equal parts brown sugar and coconut oil to form an easy scrub, apply it on your face in gentle circular motions, let it sink in for a few minutes and wash it off with warm water.' }
+        ]
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -86,6 +87,20 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
+         // Call this function when the page loads (the "ready" event)
+         $(document).ready(function () {
+            // compile the template
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedArticles");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < DIY.length; i++) {
+                var curData = DIY[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
+
+            }
+        });
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
@@ -122,6 +137,9 @@
             }
         }
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>

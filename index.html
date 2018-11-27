@@ -39,7 +39,7 @@
       <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
       <a href="myAccountPage.html">MY ACCOUNT</a>
     </div>
-    
+
     <a class="title justify-content-center" href="index.html">SkincareMaster</a>
     <span class="mainManuButton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
   </div>
@@ -157,31 +157,45 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="row justify-content-center">
+
           <div class="col-7">
-            <img src="/img/diy-organic-skincare-2646.jpg" class="img-fluid">
+            <a href="articleDetail.html?type=advice&title=Always%20Double%20Cleanse">
+              <img src="/img/cleanFace.jpg" class="img-fluid">
+            </a>
           </div>
           <div class="col-3">
-            <p>DIY organic skincare</p>
+            <a href="articleDetail.html?type=advice&title=Always%20Double%20Cleanse">
+              <p>Always Double Cleanse</p>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-7">
+            <a href="articleDetail.html?type=DIY&title=The%20Calming%20Honey%20Mask">
+              <img src="/img/honey.jpg" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-3">
+            <a href="articleDetail.html?type=DIY&title=The%20Calming%20Honey%20Mask">
+              <p>The Calming Honey Mask</p>
+            </a>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <div class="row justify-content-center">
           <div class="col-7">
-            <img src="/img/skincare.jpg" class="img-fluid">
+            <a href="articleDetail.html?type=DIY&title=The%20Exfoliating%20Brown%20Sugar%20Scrub%20Mask">
+              <img src="/img/exfoliate.jpg" class="img-fluid">
+            </a>
           </div>
           <div class="col-3">
-            <p>DIY organic skincare</p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row justify-content-center">
-          <div class="col-7">
-            <img src="/img/evde-cilt-bakimi.jpg" class="img-fluid">
-          </div>
-          <div class="col-3">
-            <p>DIY organic skincare</p>
+            <a href="articleDetail.html?type=DIY&title=The%20Exfoliating%20Brown%20Sugar%20Scrub%20Mask">
+              <p>The Exfoliating Brown Sugar Scrub Mask</p>
+            </a>
           </div>
         </div>
       </div>
@@ -234,12 +248,12 @@
     ]
 
     var types = [
-    {'type': 'cleanser', 'link': 'cleanserList.html'},
-    {'type': 'moisturizer', 'link': 'moisturizerList.html'},
-    {'type': 'acne', 'link': 'AcneList.html'},
-    {'type': 'lotion', 'link': 'bodyLotionList.html'},
-    {'type': 'blackhead', 'link': 'BlackheadsList.html'},
-    {'type': 'wrinkle', 'link': 'WrinklesList.html'}
+      { 'type': 'cleanser', 'link': 'cleanserList.html' },
+      { 'type': 'moisturizer', 'link': 'moisturizerList.html' },
+      { 'type': 'acne', 'link': 'AcneList.html' },
+      { 'type': 'lotion', 'link': 'bodyLotionList.html' },
+      { 'type': 'blackhead', 'link': 'BlackheadsList.html' },
+      { 'type': 'wrinkle', 'link': 'WrinklesList.html' }
     ]
 
     $(document).ready(function () {
@@ -287,7 +301,7 @@
       if (foundProduct) {
         window.location = "productDetail.html?product=" + product;
       }
-      else if(foundType){
+      else if (foundType) {
         window.location = link;
       }
       else {

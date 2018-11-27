@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -54,32 +54,35 @@
     </div>
 
     <!-- articles -->
+    <script id="entry-template" type="text/x-handlebars-template">
     <div class="container-fluid">
-        <a href="articleDetail.html">
+        <a href="articleDetail.html?type=advice&title={{title}}">
             <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/sun-protection-all-year-long-sunscreen-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{picture}}" alt="Card image cap">
                 <div class="card-body">
-                    <h6 class="card-text">Here's Why You Need Sun Protection All Year Long</h6>
+                    <h6 class="card-text">{{title}}</h6>
                 </div>
             </div>
         </a>
     </div>
+    </script>
 
     <div class="container-fluid">
-        <a href="articleDetail.html">
-            <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/alcohol-in-beauty-products-intro.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h6 class="card-text">How Bad, Really, Is Alcohol in Your Skin Care?</h6>
-                </div>
-            </div>
-        </a>
+        <div id="templatedArticles">
+            
+        </div>
     </div>
-
 
 
 
     <script>
+        var advice = [
+            { 'title': 'Always Double Cleanse', 'picture': 'img/cleanFace.jpg', 'text': "Why? Double cleansing means washing your face twice because one wash just isn’t enough. Whether you wear a ton of makeup or not, double cleansing at the end of the day is essential to remove all of the makeup, dirt, grime, and pollution that builds up on your skin. Washing your face once will only remove the surface dirt, but a second cleanse will actually be able to penetrate your pores, sweeping away any sebum and leftover dirt or makeup. It also means your following skincare steps will be able to penetrate your skin better." },
+            { 'title': 'Layer Your Products the Right Way', 'picture': 'img/applyLotion.jpg', 'text': 'Why? Layering your skincare in the wrong order means that some of your products won’t be able to absorb into your skin properly.  For example, if you apply a moisturizer before your eye cream, because moisturizers have occlusives in (ingredients that create a barrier on your skin), the potent ingredients in your eye cream wouldn’t get a chance to penetrate your skin properly and work their magic.' }
+            
+
+
+        ]
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -87,7 +90,20 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
+         // Call this function when the page loads (the "ready" event)
+         $(document).ready(function () {
+            // compile the template
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedArticles");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < advice.length; i++) {
+                var curData = advice[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
 
+            }
+        });
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
@@ -124,6 +140,9 @@
             }
         }
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>

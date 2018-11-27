@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -54,21 +54,15 @@
     </div>
 
     <!-- article -->
+    <script id="articleDetail-template" type="text/x-handlebars-template">
     <div class="container-fluid justify-content-center">
-        <img src="img/sun-protection-all-year-long-sunscreen-1.jpg">
-        <h3>Here's Why You Need Sun Protection All Year Long</h3>
-        <p>We know to be careful about the ingredients in our food,
-            but we're not always so diligent when it comes to the
-            products we apply on our skin. But since skin is our
-            largest organ, it's crucial to treat it with respect.<br><br>
+        <img class="card-img-top"src="{{picture}}">
+        <h3>{{title}}</h3>
+        <p>{{text}}</p>
+    </div>
+    </script>
 
-            When it comes to ingredients in beauty products, alcohol
-            is one that appears quite often. Known to dry out skin,
-            alcohol often gets a bad rap. But there are so many different
-            types of alcohol, is it possible they aren't all bad? We
-            talked to some experts to find out whether alcohol really
-            is bad for the skin.
-        </p>
+    <div id="templateArticleDetail">
 
     </div>
 
@@ -83,6 +77,21 @@
 
 
     <script>
+        var articles = [
+            //DIY
+            { 'title': 'The Calming Honey Mask', 'picture': 'img/honey.jpg', 'text': " 2 tablespoons of pure honey 1 teaspoon of cinnamon 1 wedge of fresh lemon. Warm the honey in the microwave for a few seconds, then combine it with the cinnamon and the juice of a lemon wedge into a small bowl. Cinnamon is known to reduce inflammation and redness—plus, it sops up excess oil when applied topically. Lemon acid not only helps exfoliate your skin, but can minimize the appearance of dark spots, too. Gently massage the mixture onto your face and leave on for about 15-20 minutes, then rinse off." },
+            { 'title': 'The Exfoliating Brown Sugar Scrub Mask', 'picture': 'img/exfoliate.jpg', 'text': '2 tablespoons of brown sugar 2 tablespoons of virgin coconut oil. Brown sugar sloughs off dead skin while coconut oil packs it with moisture. The result? A soft and glowy finish. Use equal parts brown sugar and coconut oil to form an easy scrub, apply it on your face in gentle circular motions, let it sink in for a few minutes and wash it off with warm water.' },
+
+            //advice
+            { 'title': 'Always Double Cleanse', 'picture': 'img/cleanFace.jpg', 'text': "Why? Double cleansing means washing your face twice because one wash just isn’t enough. Whether you wear a ton of makeup or not, double cleansing at the end of the day is essential to remove all of the makeup, dirt, grime, and pollution that builds up on your skin. Washing your face once will only remove the surface dirt, but a second cleanse will actually be able to penetrate your pores, sweeping away any sebum and leftover dirt or makeup. It also means your following skincare steps will be able to penetrate your skin better." },
+            { 'title': 'Layer Your Products the Right Way', 'picture': 'img/applyLotion.jpg', 'text': 'Why? Layering your skincare in the wrong order means that some of your products won’t be able to absorb into your skin properly.  For example, if you apply a moisturizer before your eye cream, because moisturizers have occlusives in (ingredients that create a barrier on your skin), the potent ingredients in your eye cream wouldn’t get a chance to penetrate your skin properly and work their magic.' },
+            
+            //nutrition
+            { 'title': 'Vitamin C', 'picture': 'img/vc.jpg', 'text': " Like vitamin E, vitamin C is also a powerful antioxidant. Vitamin C helps to reduce oxidative stress to the body and may lower cancer risk. Vitamin C is also involved in the synthesis of collagen, an important protein for making your skin supple. Many fruits and vegetables are great sources of vitamin C, so be sure to include them in your diet. Food sources high in vitamin C include: broccoli, Brussels sprouts, kale, bell peppers, guava, acerola, beet greens, grapefruit, strawberries, red and green bell peppers, kale, parsley, collard greens and turnip greens." },
+            { 'title': 'Selenium', 'picture': 'img/nuts.jpg', 'text': 'Selenium is a powerful antioxidant trace mineral that is responsible for maintaining skin firmness and elasticity. This mineral not only prevents acne but also aids in skin cancer prevention. It promotes absorption of vitamin E and enhances the antioxidant function of vitamin E, which is mainly stored in the skin. The end result is glowing skin and less deterioration to the skin\'s collagen. Food sources high in selenium include: brazil nuts, walnuts, red snapper, tuna, liver, wheat germ, herring, onion, seafood, whole grains, brown rice and poultry. ' }
+        
+        ]
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -90,6 +99,29 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
+        $(document).ready(function () {
+            // get url parameters
+            var queryParams = new URLSearchParams(window.location.search);
+            var title = queryParams.get('title');
+            var type = queryParams.get('type');
+
+
+            // product template variables
+            var sourceP = $("#articleDetail-template").html();
+            var templateP = Handlebars.compile(sourceP);
+            var parentDivP = $("#templateArticleDetail");
+
+            // print out curr product
+            for (var i = 0; i < articles.length; i++) {
+                var currData = articles[i];
+                if (currData.title == title) {
+                    var currHTML = templateP(currData);
+                    parentDivP.append(currHTML);
+                }
+            }
+
+            
+        });
 
         function search() {
             var input = document.getElementById("searchField").value;
@@ -127,6 +159,9 @@
             }
         }
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>

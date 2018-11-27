@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, iinitial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skincare Master</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -54,30 +54,32 @@
     </div>
 
     <!-- articles -->
+    <script id="entry-template" type="text/x-handlebars-template">
     <div class="container-fluid">
-        <a href="articleDetail.html">
+        <a href="articleDetail.html?type=nutrition&title={{title}}">
             <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/sun-protection-all-year-long-sunscreen-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{picture}}" alt="Card image cap">
                 <div class="card-body">
-                    <h6 class="card-text">Here's Why You Need Sun Protection All Year Long</h6>
+                    <h6 class="card-text">{{title}}</h6>
                 </div>
             </div>
         </a>
     </div>
+    </script>
 
     <div class="container-fluid">
-        <a href="articleDetail.html">
-            <div class="card" style="margin:1rem">
-                <img class="card-img-top" src="img/alcohol-in-beauty-products-intro.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h6 class="card-text">How Bad, Really, Is Alcohol in Your Skin Care?</h6>
-                </div>
-            </div>
-        </a>
+        <div id="templatedArticles">
+            
+        </div>
     </div>
+
 
 
     <script>
+        var nutrition = [
+            { 'title': 'Vitamin C', 'picture': 'img/vc.jpg', 'text': " Like vitamin E, vitamin C is also a powerful antioxidant. Vitamin C helps to reduce oxidative stress to the body and may lower cancer risk. Vitamin C is also involved in the synthesis of collagen, an important protein for making your skin supple. Many fruits and vegetables are great sources of vitamin C, so be sure to include them in your diet. Food sources high in vitamin C include: broccoli, Brussels sprouts, kale, bell peppers, guava, acerola, beet greens, grapefruit, strawberries, red and green bell peppers, kale, parsley, collard greens and turnip greens." },
+            { 'title': 'Selenium', 'picture': 'img/nuts.jpg', 'text': 'Selenium is a powerful antioxidant trace mineral that is responsible for maintaining skin firmness and elasticity. This mineral not only prevents acne but also aids in skin cancer prevention. It promotes absorption of vitamin E and enhances the antioxidant function of vitamin E, which is mainly stored in the skin. The end result is glowing skin and less deterioration to the skin\'s collagen. Food sources high in selenium include: brazil nuts, walnuts, red snapper, tuna, liver, wheat germ, herring, onion, seafood, whole grains, brown rice and poultry. ' }
+        ]
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -85,7 +87,20 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
+         // Call this function when the page loads (the "ready" event)
+         $(document).ready(function () {
+            // compile the template
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var parentDiv = $("#templatedArticles");
+            // now iterate through the complexData list and keep appending:
+            for (var i = 0; i < nutrition.length; i++) {
+                var curData = nutrition[i];
+                var curHtml = template(curData);
+                parentDiv.append(curHtml);
 
+            }
+        });
         function search() {
             var input = document.getElementById("searchField").value;
             var productList = JSON.parse(localStorage.getItem("productList"));
@@ -121,8 +136,10 @@
                 alert("Sorry, item is not found :(");
             }
         }
-
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.11.js"></script>
 </body>
 
 </html>
