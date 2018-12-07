@@ -37,7 +37,8 @@
             <a class="innerSidenav" href="NutritionList.html">Nutrition</a>
             <a class="innerSidenav" href="ExpertAdviceList.html">Expert Advice</a>
             <a href="myAccountPage.html">MY ACCOUNT</a>
-            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign Out</button>
+            <button type="button" class="btn btn-dark" id="signOutBtn" onclick="signOut()" style="visibility: hidden;margin-left:150px">Sign
+                Out</button>
         </div>
         <a class="backBtn" href="javascript:history.back()">
             <i class="fas fa-chevron-left" style='font-size:24px'></i>
@@ -68,7 +69,7 @@
             </div>
         </div>
     </div>
-
+    <!--
     <script id="entry-template" type="text/x-handlebars-template">
                 <div class="card col-5" style="margin: 0.5rem">
                     <a href="productDetail.html?type=acne&product={{productName}}">
@@ -83,6 +84,28 @@
                     </a>
                 </div>
             </script>
+-->
+    <script id="entry-template" type="text/x-handlebars-template">
+        <a href="productDetail.html?type=wrinkle&product={{productName}}">
+            <div class="card" style="margin: 0.5rem;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;padding: 10px;">
+                <div class="row">
+                    <div class="col-3">
+                        <img class="card-img-top" src="{{picture}}" alt="#">
+                    </div>
+                    <div class="col-9">
+                        <div class="card-body" style="padding: 0rem">
+                        <p class="card-title font-weight-bold">{{company}}</p>
+                        <p class="card-text text-truncate">{{productName}}</p>
+                        <p class="card-text text-truncate">Rating: {{rating}}</p>
+                        <p class="card-text text-truncate">Favorites: {{fav}} k</p>
+                        <p class="card-text text-truncate">${{price}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </a>
+    </script>
 
     <div class="container-fluid" id="content">
         <div class="row justify-content-center" id="templatedProducts">
@@ -93,9 +116,9 @@
 
     <script>
         var wrinkle = [
-            { 'company': 'ESTÉE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price': 98 },
+            { 'company': 'ESTEE LAUDER', 'productName': 'Advanced Night Repair Synchronized Recovery Complex II', 'picture': 'img/Wrinkle1.JPG', 'rating': 3, 'fav': 30, 'price': 98 },
             { 'company': 'KATE SOMERVILLE', 'productName': 'Instant Detox Mask', 'picture': 'img/Wrinkle2.JPG', 'rating': 4, 'fav': 40, 'price': 60 },
-            { 'company': 'ESTÉE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price': 98 },
+            { 'company': 'ESTEE LAUDER', 'productName': 'Perfectionist CPR Wrinkle Lifting', 'picture': 'img/wrinkle3.png', 'rating': 3, 'fav': 50, 'price': 98 },
             { 'company': 'DR. DENNIS GROSS SKINCARE', 'productName': 'Retinol Wrinkle Recovery Overnight Serum', 'picture': 'img/wrinkle4.png', 'rating': 5, 'fav': 60, 'price': 88 }
         ]
 
@@ -112,8 +135,8 @@
 
             }
 
-            if(sessionStorage.getItem("isLoggedIn") == "yes"){
-                document.getElementById("signOutBtn").style.visibility="visible";
+            if (sessionStorage.getItem("isLoggedIn") == "yes") {
+                document.getElementById("signOutBtn").style.visibility = "visible";
             }
         });
 
